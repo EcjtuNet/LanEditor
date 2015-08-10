@@ -1,0 +1,1025 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"border",
+				"border-left"
+			],
+			[
+				"borer",
+				"border-right"
+			],
+			[
+				"r",
+				"rgba()"
+			],
+			[
+				"cur",
+				"cur_sort"
+			],
+			[
+				"get",
+				"getCookie"
+			],
+			[
+				"index",
+				"indextype"
+			],
+			[
+				"tie",
+				"timer"
+			],
+			[
+				"time",
+				"time"
+			],
+			[
+				"set",
+				"setTimeout"
+			],
+			[
+				"show",
+				"showWord"
+			],
+			[
+				"sort",
+				"sort"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"inde",
+				"indextype"
+			],
+			[
+				"visi",
+				"visibility"
+			],
+			[
+				"vis",
+				"visible"
+			],
+			[
+				"ind",
+				"indextype"
+			],
+			[
+				"visib",
+				"visible"
+			],
+			[
+				"type",
+				"typeCount"
+			],
+			[
+				"ty",
+				"typeCount"
+			],
+			[
+				"bak",
+				"background"
+			],
+			[
+				"key",
+				"keychars"
+			],
+			[
+				"login",
+				"loginname"
+			],
+			[
+				"cook",
+				"cookieString"
+			],
+			[
+				"page",
+				"page_cookie"
+			],
+			[
+				"cout",
+				"typeCount"
+			],
+			[
+				"deal",
+				"deal_right"
+			],
+			[
+				"cu",
+				"cur_type"
+			],
+			[
+				"uid",
+				"uid2"
+			],
+			[
+				"cou",
+				"count1"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"wat",
+				"water"
+			],
+			[
+				"sele",
+				"select"
+			],
+			[
+				"qu",
+				"query"
+			],
+			[
+				"sql",
+				"sql2"
+			],
+			[
+				"count",
+				"count1"
+			],
+			[
+				"pay",
+				"paysum"
+			],
+			[
+				"data",
+				"databases"
+			],
+			[
+				"da",
+				"databases"
+			],
+			[
+				"_",
+				"_GET"
+			],
+			[
+				"dat",
+				"datas"
+			],
+			[
+				"manager",
+				"manager-gui"
+			],
+			[
+				"json",
+				"json"
+			],
+			[
+				"jso",
+				"json"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"pages",
+				"pageSize"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"sleec",
+				"selected"
+			],
+			[
+				"pa",
+				"page"
+			],
+			[
+				"note",
+				"note"
+			],
+			[
+				"init",
+				"inite"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"min-",
+				"min-width"
+			],
+			[
+				"not",
+				"notee"
+			],
+			[
+				"borde",
+				"border"
+			],
+			[
+				"margi",
+				"margin-bottom"
+			],
+			[
+				"us",
+				"user"
+			],
+			[
+				"Se",
+				"SengMessage"
+			],
+			[
+				"fun",
+				"func"
+			],
+			[
+				"sta",
+				"start"
+			],
+			[
+				"ge",
+				"getList"
+			],
+			[
+				"请输入",
+				"请输入验证码"
+			],
+			[
+				"eror",
+				"error_reporting"
+			],
+			[
+				"imp",
+				"important"
+			],
+			[
+				"il",
+				"inline-block"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"u",
+				"uid"
+			],
+			[
+				"img",
+				"imgobj"
+			],
+			[
+				"Dis",
+				"Display_Replies"
+			],
+			[
+				"blind",
+				"blindID"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"list",
+				"list-style"
+			],
+			[
+				"photo",
+				"photofile"
+			],
+			[
+				"work",
+				"workid"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"area",
+				"areaname"
+			],
+			[
+				"areaname",
+				"areaname"
+			],
+			[
+				"seel",
+				"settlementname"
+			],
+			[
+				"sc",
+				"success"
+			],
+			[
+				"d",
+				"databases"
+			],
+			[
+				"en",
+				"enterid"
+			],
+			[
+				"aea",
+				"areaid"
+			],
+			[
+				"city",
+				"cityid"
+			],
+			[
+				"I",
+				"ImageUpload"
+			],
+			[
+				"pick",
+				"pickid"
+			],
+			[
+				"al",
+				"alert"
+			],
+			[
+				"ph",
+				"phone"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"cl",
+				"closeBox"
+			],
+			[
+				"ta",
+				"target	Attr"
+			],
+			[
+				"wd",
+				"width"
+			],
+			[
+				"i",
+				"inline"
+			],
+			[
+				"bor",
+				"border-bottom"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"s",
+				"src"
+			],
+			[
+				"te",
+				"text-decoration"
+			],
+			[
+				"dt",
+				"datas"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"fl",
+				"float"
+			],
+			[
+				"dta",
+				"databases"
+			],
+			[
+				"from",
+				"fromid"
+			],
+			[
+				"session",
+				"session_start"
+			],
+			[
+				"js",
+				"json_result"
+			],
+			[
+				"php",
+				"php"
+			],
+			[
+				"crea",
+				"create_guid"
+			],
+			[
+				"cre",
+				"create_guid"
+			],
+			[
+				"provin",
+				"provinceName"
+			],
+			[
+				"me",
+				"message"
+			],
+			[
+				"mes",
+				"messageobj"
+			],
+			[
+				"ent",
+				"enterid"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"enter",
+				"entercertify"
+			],
+			[
+				"datas",
+				"datas2"
+			],
+			[
+				"dis",
+				"displaytime"
+			],
+			[
+				"send",
+				"sendtime"
+			],
+			[
+				"session_de",
+				"session_destroy"
+			],
+			[
+				"rsu",
+				"json_result"
+			],
+			[
+				"resu",
+				"result"
+			],
+			[
+				"pro",
+				"province"
+			],
+			[
+				"pr",
+				"province"
+			],
+			[
+				"org",
+				"orgscale"
+			],
+			[
+				"admin",
+				"adminname"
+			],
+			[
+				"c",
+				"class	Attr"
+			],
+			[
+				"body",
+				"bodywidth"
+			],
+			[
+				"bod",
+				"bodywidth"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "LanEditor.html",
+			"settings":
+			{
+				"buffer_size": 721,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "LanEditor.js",
+			"settings":
+			{
+				"buffer_size": 2170,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "highlight/styles/LanEditor.css",
+			"settings":
+			{
+				"buffer_size": 2486,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "highlight/README.md",
+			"settings":
+			{
+				"buffer_size": 3366,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 387.0,
+		"last_filter": ":w",
+		"selected_items":
+		[
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/BluesDream/Sites/1/LanEditor"
+	],
+	"file_history":
+	[
+		"/Users/BluesDream/Documents/BluesDream/Markdown/showdown-master/markdown.html",
+		"/Users/BluesDream/Sites/letter-product/templates/firstindex.html",
+		"/Users/BluesDream/Sites/letter-product/templates/secindex.html",
+		"/Users/BluesDream/Sites/1/LanEditor/highlight/CHANGES.md",
+		"/Users/BluesDream/Documents/BluesDream/Markdown/showdown-master/README.md",
+		"/Users/BluesDream/Sites/EpicEditor-v0.2.2/epiceditor.html",
+		"/Users/BluesDream/Documents/BluesDream/Markdown编辑器/EpicEditor-v0.2.2/epiceditor.html",
+		"/Users/BluesDream/Sites/letter/templates/js/index.js",
+		"/Users/BluesDream/Sites/phpweb/function/SendSMS.php",
+		"/Users/BluesDream/Sites/1/LanEditor/LanEditor.html",
+		"/Users/BluesDream/Sites/1/LanEditor/LanEditor.js",
+		"/Users/BluesDream/Sites/1/LanEditor/LanEditor.css",
+		"/Users/BluesDream/Sites/1/LanEditor/highlight/styles/LanEditor.css",
+		"/Users/BluesDream/Sites/1/LanEditor/highlight/styles/solarized_light.css",
+		"/Users/BluesDream/Sites/1/LanEditor/highlight/styles/agate.css",
+		"/Users/BluesDream/Sites/letter/templates/config/typecfg.js",
+		"/Users/BluesDream/Sites/SunYuezhenGP/chat/js/index.js",
+		"/Users/BluesDream/Sites/SunYuezhenGP/chat/index.html",
+		"/Users/BluesDream/Sites/SunYuezhenGP/chat/service/index.php",
+		"/Users/BluesDream/Sites/SunYuezhenGP/chat/service/index.js",
+		"/Users/BluesDream/Sites/letter-product/templates/buy.html",
+		"/Users/BluesDream/Sites/letter-product/templates/thirdindex.html",
+		"/Users/BluesDream/Sites/letter-product/templates/config/typecfg.min.js",
+		"/Users/BluesDream/Sites/letter-product/letter.sql",
+		"/Users/BluesDream/Sites/PowerManagerSystem/check/cash.php",
+		"/Users/BluesDream/Sites/PowerManagerSystem/check/pay.php",
+		"/Users/BluesDream/Documents/sae/lansky/1/forum/javascript/index.js",
+		"/Users/BluesDream/Sites/letter/admin/medoo.php",
+		"/Users/BluesDream/Sites/1/slim/index.php",
+		"/Users/BluesDream/Sites/letter/secindex3.html",
+		"/Users/BluesDream/Sites/letter/css/secindex3.css",
+		"/Users/BluesDream/Sites/letter/secindex2.html",
+		"/Users/BluesDream/Sites/letter/css/secindex2.css",
+		"/Users/BluesDream/Sites/letter/thridindex.html",
+		"/Users/BluesDream/Documents/BluesDream/tank/tank.js",
+		"/Users/BluesDream/Sites/letter/config/t1.js",
+		"/Users/BluesDream/Sites/letter/config/t1副本 7.js",
+		"/Users/BluesDream/Sites/letter/config/t1副本 10.js",
+		"/Users/BluesDream/Library/Application Support/Sublime Text 3/Packages/ConvertToUTF8/ConvertToUTF8.sublime-settings",
+		"/Users/BluesDream/Library/Application Support/Sublime Text 3/Packages/User/ConvertToUTF8.sublime-settings",
+		"/Users/BluesDream/Downloads/王欣怡  7月10日/任务二/change_color_10.js",
+		"/Users/BluesDream/Downloads/王欣怡  7月10日/任务一/change_color.js",
+		"/Users/BluesDream/Sites/letter/index.html",
+		"/Users/BluesDream/Sites/letter/js/index.js",
+		"/Users/BluesDream/Sites/letter/1/css/index.css",
+		"/Users/BluesDream/Sites/letter/css/index.css",
+		"/Users/BluesDream/Sites/letter/comjs/func.js",
+		"/Users/BluesDream/Sites/letter/comjs/key.js",
+		"/Users/BluesDream/Sites/letter/1/index.html",
+		"/Users/BluesDream/Sites/letter/2/index.html",
+		"/Users/BluesDream/Sites/letter/3/index.html",
+		"/Users/BluesDream/Sites/letter/js/secindex.js",
+		"/Users/BluesDream/Sites/letter/css/secindex.css",
+		"/Users/BluesDream/Sites/letter/comjs/ckey.js",
+		"/Users/BluesDream/Sites/letter/1/js/index.js",
+		"/Users/BluesDream/Documents/sae/lansky/1/play/get_lrc.php",
+		"/Users/BluesDream/Sites/PowerManagerSystem/API文档.txt",
+		"/Users/BluesDream/Sites/PowerManagerSystem/pwsys.sublime-project",
+		"/Users/BluesDream/Sites/PowerManagerSystem/pwsys.sublime-workspace",
+		"/Users/BluesDream/Documents/库文件/js/jquery.md5.js",
+		"/Users/BluesDream/Sites/PowerManagerSystem/price/ajax_price.php",
+		"/Users/BluesDream/Sites/PowerManagerSystem/price/eprice.php",
+		"/Users/BluesDream/Sites/PowerManagerSystem/price/wprice.php",
+		"/Users/BluesDream/Documents/sae/lansky/1/forum/ajax_php/sae_php_connect_mysql.php",
+		"/Users/BluesDream/Documents/sae/lansky/1/forum/search.php",
+		"/Library/Tomcat/webapps/examples/WEB-INF/web.xml",
+		"/Library/Tomcat/conf/tomcat-users.xml",
+		"/Library/Tomcat/bin/startup.bat",
+		"/Library/Tomcat/bin/shutdown.sh",
+		"/Users/BluesDream/Sites/CodingGame/3/javascript/index.js",
+		"/Users/BluesDream/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/BluesDream/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/BluesDream/Sites/PowerManagerSystem/js/json2.js",
+		"/Users/BluesDream/Documents/sae/lansky/1/config.yaml",
+		"/Users/BluesDream/Sites/PowerManagerSystem/user/css/user副本.css",
+		"/Users/BluesDream/Downloads/实验五/shiyan5.html",
+		"/Users/BluesDream/Sites/PowerManagerSystem/README.md",
+		"/Users/BluesDream/Sites/PowerManagerSystem/price/css/eprice.css",
+		"/Users/BluesDream/Sites/PowerManagerSystem/price/js/eprice.js",
+		"/Users/BluesDream/Sites/PowerManagerSystem/price/js/wprice.js",
+		"/Users/BluesDream/Sites/PowerManagerSystem/login.php",
+		"/Users/BluesDream/Sites/PowerManagerSystem/js/login.js",
+		"/Users/BluesDream/Sites/PowerManagerSystem/css/login.css",
+		"/Users/BluesDream/Sites/PowerManagerSystem/ajax_login.php",
+		"/Users/BluesDream/Sites/PowerManagerSystem/medoo.php",
+		"/Users/BluesDream/Sites/SunYuezhenGP/imgcheck.php",
+		"/Users/BluesDream/Sites/PowerManagerSystem/price/menu.php",
+		"/Users/BluesDream/Sites/PowerManagerSystem/price/js/menu.js",
+		"/Users/BluesDream/Documents/BluesDream/Desktop/jspdemo/resouce/chapter6/WebRoot/adminmenu.jsp",
+		"/Users/BluesDream/Documents/BluesDream/Desktop/jspdemo/resouce/chapter2/src/ch2/dao/UserDAO.java",
+		"/Users/BluesDream/Documents/BluesDream/Desktop/jspdemo/resouce/chapter2/WebRoot/register.jsp",
+		"/Users/BluesDream/Documents/BluesDream/Desktop/jspdemo/resouce/chapter2/WebRoot/activeUser.jsp",
+		"/Users/BluesDream/Sites/PowerManagerSystem/func/uuid.php",
+		"/Users/BluesDream/Sites/PowerManagerSystem/func/date.php",
+		"/Users/BluesDream/Sites/SunYuezhenGP/about.html",
+		"/Users/BluesDream/Sites/SunYuezhenGP/css/style.css",
+		"/Users/BluesDream/Sites/SunYuezhenGP/news.html",
+		"/Users/BluesDream/Desktop/传承网项目/网站页面/scripts/upload.js",
+		"/Users/BluesDream/Documents/sae/lansky/1/forum/index.html",
+		"/Users/BluesDream/Documents/sae/lansky/1/forum/css/index.css",
+		"/Users/BluesDream/Sites/CodingGame/6/index.js",
+		"/Users/BluesDream/Sites/CodingGame/6/index.css",
+		"/Users/BluesDream/Sites/CodingGame/6/index.html",
+		"/Users/BluesDream/Sites/zao/3/index.php",
+		"/Users/BluesDream/Sites/zao/3/page.php",
+		"/Users/BluesDream/Sites/CodingGame/1/nginx.conf",
+		"/Users/BluesDream/Documents/git/SunYuezhenGP/chat/js/index.js",
+		"/Users/BluesDream/Sites/SunYuezhenGP/manager/js/login.js",
+		"/Users/BluesDream/Sites/SunYuezhenGP/chat/ajax_chat.php",
+		"/Users/BluesDream/Sites/SunYuezhenGP/chat/service/login.js",
+		"/Users/BluesDream/Sites/SunYuezhenGP/chat/service/ajax_service.php",
+		"/Users/BluesDream/Sites/SunYuezhenGP/zhuce.html",
+		"/Users/BluesDream/Sites/SunYuezhenGP/service.html",
+		"/Users/BluesDream/Sites/SunYuezhenGP/product.html",
+		"/Users/BluesDream/Sites/SunYuezhenGP/news-content.html",
+		"/Users/BluesDream/Sites/SunYuezhenGP/index.html",
+		"/Users/BluesDream/Sites/SunYuezhenGP/case.html",
+		"/Users/BluesDream/Sites/SunYuezhenGP/career.html",
+		"/Users/BluesDream/Sites/SunYuezhenGP/AboutUs.html",
+		"/Users/BluesDream/Sites/SunYuezhenGP/chat/service/login.php",
+		"/Users/BluesDream/Sites/SunYuezhenGP/manager/js/addService.js",
+		"/Users/BluesDream/Sites/SunYuezhenGP/manager/ajax_Service.php",
+		"/Users/BluesDream/Sites/SunYuezhenGP/manager/addService.php",
+		"/Users/BluesDream/Sites/SunYuezhenGP/manager/js/menu.js",
+		"/Users/BluesDream/Sites/SunYuezhenGP/manager/menu.php",
+		"/Users/BluesDream/Sites/SunYuezhenGP/manager/ajax_login.php",
+		"/Users/BluesDream/Sites/weixin/css/center.css",
+		"/Users/BluesDream/Sites/weixin/js/info.js"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"hidden",
+			"visible",
+			"visibility",
+			"12",
+			"-12",
+			"12",
+			"zIndex",
+			"1",
+			"if",
+			"			<",
+			"blade",
+			"pre.prettyp",
+			"function",
+			"release",
+			"icons",
+			"timer-sprite.png",
+			"no",
+			"content",
+			"title",
+			";\n",
+			"number",
+			"fontsize",
+			"td",
+			"ke-outline",
+			"content",
+			"lati",
+			"lon",
+			"expiredate",
+			"date",
+			"money",
+			"number",
+			"releaseman",
+			"title",
+			"180px",
+			"max",
+			"execute",
+			"font",
+			"gd",
+			"pagecol",
+			"$",
+			"curImgId",
+			"curImg"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "LanEditor.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 721,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								619,
+								619
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "LanEditor.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2170,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1171,
+								1171
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "highlight/styles/LanEditor.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2486,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								382,
+								382
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "highlight/README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3366,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1687,
+								1687
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 186.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "LanEditor.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": false,
+	"side_bar_visible": true,
+	"side_bar_width": 198.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 1
+	}
+}
