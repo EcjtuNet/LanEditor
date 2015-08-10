@@ -59,7 +59,8 @@ body {
 .Keyword {
 	position: absolute;
 	width: 280px;
-	height: auto;
+	/*height: auto;*/
+    height: 4px;
 	max-height: 180px;
 	overflow: auto;
 	left: 0px;

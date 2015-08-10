@@ -79,13 +79,6 @@ var Keyword = {
         var scrolltop = TextElem.scrollTop();
         var left = cursorpos.left;
         var top = cursorpos.top - scrolltop + 18;
-        var height = parseInt(TextElem.parent().css("height"));
-        var SKLheight = parseInt(SKLelem.css("height"));
-        // console.log("top -> " + top);
-        //
-        if (top + SKLheight > height) {
-            top = top - SKLheight - 18;
-        }
         //查找匹配的单词结果
         var resultset = this.SearchKeyword(word);
         //拼接HTML代码
@@ -96,6 +89,7 @@ var Keyword = {
             });
             return;
         }
+        var KeyCount=0;
         var html = "";
         for (key in resultset) {
             //过滤键名
@@ -104,16 +98,27 @@ var Keyword = {
             }
             for (var i = 0; i < resultset[key].length; ++i) {
                 html += "<li>" + resultset[key][i] + "</li>";
+                KeyCount++;
             }
         }
         $("#KeywordLi").html(html);
+        //显示DIV框的border需要多加4像素
+        var SKLheight = (KeyCount > 10 ? 180 : KeyCount * 18) + 4;
+        var height = parseInt(TextElem.parent().css("height"));
+        // var SKLheight = parseInt(SKLelem.css("height"));
+        // console.log("top -> " + top);
+        //
+        if (top + SKLheight > height) {
+            top = top - SKLheight - 18;
+        }
         // console.log("height -> " + height + " SKLheight -> " + SKLheight);
         //查找单词为空，不显示提示列表
         SKLelem.css({
             "opacity": 1,
             "z-index": 20,
             "left": left,
-            "top": top
+            "top": top,
+            "height": SKLheight
         });
         // console.log(" cursorpos -> "+ cursorpos);
         // console.log(" top -> " + top + " scrolltop -> " + scrolltop + " cursortop -> " + cursorpos.top);
