@@ -1,9 +1,282 @@
-$(document).ready(function() {
-    var TextElem = $("#editor");
-    TextElem.focus();
-    hljs.initHighlightingOnLoad();
-    var converter = new Showdown.converter();
-    $(document).keydown(function(e) {
+var LanEditor = {
+    KeywordSet: {
+        "js": [
+            "var",
+            "function",
+            "break",
+            "delete",
+            "return",
+            "typeof",
+            "case",
+            "do",
+            "if",
+            "switch",
+            "catch",
+            "else",
+            "in",
+            "this",
+            "void",
+            "continue",
+            "false",
+            "instanceof",
+            "throw",
+            "while",
+            "debugger",
+            "finally",
+            "new",
+            "true",
+            "with",
+            "default",
+            "for",
+            "null",
+            "try"
+        ],
+        "css": [
+            "position",
+            "relative",
+            "absolute"
+        ]
+    },
+    //构造函数，初始化变量，注册按键监听
+    init: function(textelem, showelem) {
+        //初始化语法高亮
+        hljs.initHighlightingOnLoad();
+        //初始化markdown渲染器
+        this.converter = new Showdown.converter();
+        //编辑框id
+        this.textelem = textelem;
+        this.showelem = showelem;
+        this.TextElem = $("#" + textelem);
+        this.TextElem.before("<div class=\"_Keyword\" id=\"_Keyword\"><ul id=\"_KeywordLi\"></ul></div>");
+        this.SKLelem = $("#_Keyword");
+        this._timer = {};
+        var TextElem = document.getElementById(textelem);
+        if("undefined" != typeof TextElem.addEventListener){
+            TextElem.addEventListener("keydown", this.KeyRewrite, false);
+            TextElem.addEventListener("keyup", this.AutoCompleteSymbol, false);
+            TextElem.addEventListener("keyup", this.AutoCompleteKeyword, false);
+            TextElem.addEventListener("keyup", function(){
+                LanEditor.DelayTillLast.call(LanEditor, "RenderHTML", LanEditor.RenderHTML, 300);
+            }, false);
+        }else if("undefined" != typeof TextElem.attachEvent){
+            TextElem.attachEvent("keydown", this.KeyRewrite);
+            TextElem.attachEvent("keyup", this.AutoCompleteSymbol);
+            TextElem.attachEvent("keyup", this.AutoCompleteKeyword);
+            TextElem.attachEvent("keyup", function(){
+                LanEditor.DelayTillLast.call(LanEditor, "RenderHTML", LanEditor.RenderHTML);
+            }, 300);
+        }else{
+            alert("此浏览器太老，建议用chrome浏览器");
+        }
+    },
+    //延迟执行最后一次调用的函数
+    DelayTillLast: function (id, fn, wait) {
+        if (this._timer[id]) {
+            window.clearTimeout(this._timer[id]);
+            delete this._timer[id];
+        }
+
+        return this._timer[id] = window.setTimeout(function() {
+            fn.call(LanEditor);
+            delete LanEditor._timer[id];
+        }, wait);
+    },
+    //渲染HTML
+    RenderHTML: function() {
+        $("#" + this.showelem).html(this.converter.makeHtml(this.TextElem.val()));
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+    },
+    //关键字自动补全，keyup阶段执行
+    AutoCompleteKeyword: function(event) {
+        var TextElem = $(this);
+        var e = event;
+        var SKLelem = $("#_Keyword");
+        if ((e.which < 65 && e.which > 57 || e.which > 90 || e.which < 48) && e.which != 8) {
+            SKLelem.css({
+                "opacity": 0,
+                "z-index": -20
+            });
+            return;
+        }
+        //要匹配的单词
+        var word = "";
+        //查找光标前面的单词
+        var i = 1;
+        var pchar = TextElem.iGetPosStr(-i).charAt(0);
+        while (pchar != "" && pchar != "(" && pchar != ")" && pchar != ";") {
+            if (i > TextElem.val().length) {
+                break;
+            }
+            if (pchar >= "a" && pchar <= "z" || pchar >= "A" && pchar <= "Z" || pchar == "_" || pchar == "-") {
+                i++;
+            } else {
+                break;
+            }
+            pchar = TextElem.iGetPosStr(-i).charAt(0);
+        }
+        if (i > 1) {
+            word = TextElem.iGetPosStr(-(i - 1));
+            LanEditor.ShowKeywordList(word);
+        } else {
+            SKLelem.css({
+                "opacity": 0,
+                "z-index": -20
+            });
+        }
+    },
+    //显示关键字提示列表
+    ShowKeywordList: function(word) {
+        var TextElem = this.TextElem;
+        var SKLelem = this.SKLelem;
+        var cursorpos = CursorPos.GetCursorPos(document.getElementById(this.textelem));
+        var scrolltop = TextElem.scrollTop();
+        var left = cursorpos.left;
+        var top = cursorpos.top - scrolltop + 18;
+        //查找匹配的单词结果
+        var resultset = this.SearchKeyword(word);
+        //查找单词为空，不显示提示列表
+        if (!resultset) {
+            SKLelem.css({
+                "opacity": 0,
+                "z-index": -20
+            });
+            return;
+        }
+        //拼接HTML代码
+        var KeyCount=0;
+        var html = "";
+        for (key in resultset) {
+            //过滤键名
+            if (!isNaN(key)) {
+                continue;
+            }
+            for (var i = 0; i < resultset[key].length; ++i) {
+                html += "<li>" + resultset[key][i] + "</li>";
+                KeyCount++;
+            }
+        }
+        $("#_KeywordLi").html(html);
+        //显示DIV框的border需要多加4像素
+        var SKLheight = (KeyCount > 10 ? 180 : KeyCount * 18) + 4;
+        var height = parseInt(TextElem.parent().css("height"));
+        // 判断提示框是否超出边界，是则调整显示位置
+        if (top + SKLheight > height) {
+            top = top - SKLheight - 18;
+        }
+        // console.log("height -> " + height + " SKLheight -> " + SKLheight);
+        // 显示提示框
+        SKLelem.css({
+            "opacity": 1,
+            "z-index": 20,
+            "left": left,
+            "top": top,
+            "height": SKLheight
+        });
+        // console.log(" cursorpos -> "+ cursorpos);
+        // console.log(" top -> " + top + " scrolltop -> " + scrolltop + " cursortop -> " + cursorpos.top);
+    },
+    SearchKeyword: function(word) {
+        var flag = false;
+        var resultset = new Array();
+        var count = 0;
+        var KeywordSet = this.KeywordSet;
+        for (key in KeywordSet) {
+            resultset.push(key);
+            resultset[key] = new Array();
+            for (var i = 0; i < KeywordSet[key].length; ++i) {
+                // console.log("in " + Keyword[key][i] + " search -> " + word + " search reg ->" + "/" + word + "/i search flag -> " + Keyword[key][i].search("/" + word + "/i"));
+                var reg = new RegExp("(" + word + ")", "gi");
+                if (KeywordSet[key][i].search(reg) > -1) {
+                    resultset[key].push(KeywordSet[key][i].replace(reg, "<span class=\"_KeyHL\">$1</span>"));
+                    flag = true;
+                    count++;
+                }
+            }
+        }
+        this.KeywordCount = count;
+        this.SelectKeyword = 0;
+        return flag ? resultset : false;
+    },
+    //符号自动补全，keyup阶段执行
+    AutoCompleteSymbol: function(event) {
+        var e = event;
+        var TextElem = $(this);
+        //按回车缩进和上一行相同的间距
+        if (e.which == 13) {
+            var space = 0;
+            var i = 2;
+            //计算上一行前面的空格缩进个数
+            while (TextElem.iGetPosStr(-i).charAt(0) != "\n" && TextElem.iGetPosStr(-i).charAt(0) != "\r\n") {
+                if (TextElem.iGetPosStr(-i).charAt(0) == " ") {
+                    space++;
+                } else if (TextElem.iGetPosStr(-i).charAt(0) == "\t") {
+                    space += 4;
+                } else {
+                    space = 0;
+                }
+                ++i;
+                if (i > TextElem.val().length) {
+                    break;
+                }
+            }
+            //如果是成对{}按回车键，则多加4个空格缩进
+            var isfunc = false;
+            var pre = TextElem.iGetPosStr(-2);
+            if (pre == "{\n") {
+                space += 4;
+                isfunc = true;
+            }
+            for (var i = 0; i < space; ++i) {
+                TextElem.iAddField(" ");
+            }
+            var pos = TextElem.iGetFieldPos();
+            if (isfunc) {
+                TextElem.iAddField("\n");
+                for (var i = 0; i < space - 4; ++i) {
+                    TextElem.iAddField(" ");
+                }
+            }
+            TextElem.iSelectField(pos);
+        } else if (e.shiftKey && e.which == 57) { // ( 左括号自动补全
+            TextElem.iAddField(")");
+            TextElem.iSelectField(TextElem.iGetFieldPos() - 1);
+        } else if (e.shiftKey && e.which == 48) { // ) 右括号判断是否成对匹配
+            var pre = TextElem.iGetPosStr(-2);
+            var next = TextElem.iGetPosStr(1);
+            if (pre == "()" && next == ")") {
+                TextElem.iDelField(1);
+                TextElem.iSelectField(TextElem.iGetFieldPos() + 1);
+            }
+        } else if (e.shiftKey && e.which == 219) { // { 左大括号自动补全
+            TextElem.iAddField("}");
+            TextElem.iSelectField(TextElem.iGetFieldPos() - 1);
+        } else if (e.shiftKey && e.which == 221) { // } 右大括号判断是否成对匹配
+            var pre = TextElem.iGetPosStr(-2);
+            var next = TextElem.iGetPosStr(1);
+            if (pre == "{}" && next == "}") {
+                TextElem.iDelField(-1);
+            }
+        } else if (e.which == 219) { // [ 左中括号自动补全
+            if (TextElem.iGetPosStr(-1) == "[") {
+                TextElem.iAddField("]");
+            } else {
+                TextElem.iAddField("】");
+            }
+            TextElem.iSelectField(TextElem.iGetFieldPos() - 1);
+        } else if (e.which == 221) { // ] 右中括号判断是否成对匹配
+            var pre = TextElem.iGetPosStr(-2);
+            var next = TextElem.iGetPosStr(1);
+            if ((pre == "[]" || pre == "【】") && (next == "]" || next == "】")) {
+                TextElem.iDelField(-1);
+            }
+        }
+    },
+    //重写按键功能，在keydown阶段执行
+    KeyRewrite: function(event) {
+        var TextElem = $(this);
+        var e = event;
         //阻止Tab事件，换成4个空格
         if (e.which == 9) {
             e.preventDefault();
@@ -35,30 +308,255 @@ $(document).ready(function() {
             }
         }
         // console.log("keyCode -> " + e.which);
-    });
-    $(document).keypress(function() {
+    }
+};
 
-    });
-    $(document).keyup(function(e) {
-        //自动补全符号
-        Keyword.AutoCompleteSymbol(e, TextElem);
-        //自动补全单词
-        Keyword.AutoCompleteKeyword(e, TextElem);
-        //渲染HTML预览
-        delay_till_last("render", function() {
+/* ----------------------------获取光标在文本框的位置-----------------------------------
+ * 获取输入光标在页面中的坐标 
+ * 可全局使用，使用方法 CursorPos.GetCursorPos(HTMLElement)
+ * @param {HTMLElement} 输入框元素 
+ * @return {Object} 返回left和top,bottom 
+ * ------------------------------------------------------------------------------------*/
 
-            $("#show").html(converter.makeHtml(TextElem.val()));
-            $('pre code').each(function(i, block) {
-                hljs.highlightBlock(block);
-            });
-        }, 300);
-    });
-});
+var CursorPos = {
+    GetCursorPos: function(elem) {
+        if (document.selection) { //IE Support 
+            elem.focus();
+            var Sel = document.selection.createRange();
+            return {
+                left: Sel.boundingLeft,
+                top: Sel.boundingTop,
+                bottom: Sel.boundingTop + Sel.boundingHeight
+            };
+        } else {
+            var that = this;
+            var cloneDiv = '{$clone_div}',
+                cloneLeft = '{$cloneLeft}',
+                cloneFocus = '{$cloneFocus}',
+                cloneRight = '{$cloneRight}';
+            var none = '<span style="white-space:pre-wrap;"> </span>';
+            var div = elem[cloneDiv] || document.createElement('div'),
+                focus = elem[cloneFocus] || document.createElement('span');
+            var text = elem[cloneLeft] || document.createElement('span');
+            var offset = that._offset(elem),
+                index = this._getFocus(elem),
+                focusOffset = {
+                    left: 0,
+                    top: 0
+                };
+            if (!elem[cloneDiv]) {
+                elem[cloneDiv] = div, elem[cloneFocus] = focus;
+                elem[cloneLeft] = text;
+                div.appendChild(text);
+                div.appendChild(focus);
+                document.body.appendChild(div);
+                focus.innerHTML = '|';
+                focus.style.cssText = 'display:inline-block;width:0px;overflow:hidden;z-index:-100;word-wrap:break-word;word-break:break-all;';
+                div.className = this._cloneStyle(elem);
+                div.style.cssText = 'visibility:hidden;display:inline-block;position:absolute;z-index:-100;word-wrap:break-word;word-break:break-all;overflow:hidden;';
+            };
+            div.style.left = this._offset(elem).left + "px";
+            div.style.top = this._offset(elem).top + "px";
+            var strTmp = elem.value.substring(0, index).replace(/</g, '<').replace(/>/g, '>').replace(/\n/g, '<br/>').replace(/\s/g, none);
+            text.innerHTML = strTmp;
+            focus.style.display = 'inline-block';
+            try {
+                focusOffset = this._offset(focus);
+            } catch (e) {};
+            focus.style.display = 'none';
+            return {
+                left: focusOffset.left,
+                top: focusOffset.top,
+                bottom: focusOffset.bottom
+            };
+        }
+    },
+    // 克隆元素样式并返回类 
+    _cloneStyle: function(elem, cache) {
+        if (!cache && elem['${cloneName}']) return elem['${cloneName}'];
+        var className, name, rstyle = /^(number|string)$/;
+        var rname = /^(content|outline|outlineWidth)$/; //Opera: content; IE8:outline && outlineWidth 
+        var cssText = [],
+            sStyle = elem.style;
+        for (name in sStyle) {
+            if (!rname.test(name)) {
+                val = this._getStyle(elem, name);
+                if (val !== '' && rstyle.test(typeof val)) { // Firefox 4 
+                    name = name.replace(/([A-Z])/g, "-$1").toLowerCase();
+                    cssText.push(name);
+                    cssText.push(':');
+                    cssText.push(val);
+                    cssText.push(';');
+                };
+            };
+        };
+        cssText = cssText.join('');
+        elem['${cloneName}'] = className = 'clone' + (new Date).getTime();
+        this._addHeadStyle('.' + className + '{' + cssText + '}');
+        return className;
+    },
+    // 向页头插入样式 
+    _addHeadStyle: function(content) {
+        var style = this._style[document];
+        if (!style) {
+            style = this._style[document] = document.createElement('style');
+            document.getElementsByTagName('head')[0].appendChild(style);
+        };
+        style.styleSheet && (style.styleSheet.cssText += content) || style.appendChild(document.createTextNode(content));
+    },
+    _style: {},
+    // 获取最终样式 
+    _getStyle: 'getComputedStyle' in window ? function(elem, name) {
+        return getComputedStyle(elem, null)[name];
+    } : function(elem, name) {
+        return elem.currentStyle[name];
+    },
+    // 获取光标在文本框的位置 
+    _getFocus: function(elem) {
+        var index = 0;
+        if (document.selection) { // IE Support 
+            elem.focus();
+            var Sel = document.selection.createRange();
+            if (elem.nodeName === 'TEXTAREA') { //textarea 
+                var Sel2 = Sel.duplicate();
+                Sel2.moveToElementText(elem);
+                var index = -1;
+                while (Sel2.inRange(Sel)) {
+                    Sel2.moveStart('character');
+                    index++;
+                };
+            } else if (elem.nodeName === 'INPUT') { // input 
+                Sel.moveStart('character', -elem.value.length);
+                index = Sel.text.length;
+            }
+        } else if (elem.selectionStart || elem.selectionStart == '0') { // Firefox support 
+            index = elem.selectionStart;
+        }
+        return (index);
+    },
+    // 获取元素在页面中位置 
+    _offset: function(elem) {
+        var box = elem.getBoundingClientRect(),
+            doc = elem.ownerDocument,
+            body = doc.body,
+            docElem = doc.documentElement;
+        var clientTop = docElem.clientTop || body.clientTop || 0,
+            clientLeft = docElem.clientLeft || body.clientLeft || 0;
+        var top = box.top + (self.pageYOffset || docElem.scrollTop) - clientTop,
+            left = box.left + (self.pageXOffset || docElem.scrollLeft) - clientLeft;
+        return {
+            left: left,
+            top: top,
+            right: left + box.width,
+            bottom: top + box.height
+        };
+    }
+};
 
+/* -----------------------------扩展jquery函数---------------------------------
+ * 文本域光标操作（设置光标，选，添，删，取等）
+ * 快速开始
+ * 引入jquery和本文件
+ * $(element).iGetFieldPos();//获取光标位置
+ * --------------------------------------------------------------------------*/
+(function($){
+    
+    $.fn.extend({
+        /*
+         * 获取光标所在位置
+         */
+        iGetFieldPos:function(){
+            var field=this.get(0);
+            if(document.selection){
+                //IE
+                $(this).focus();
+                var sel=document.selection;
+                var range=sel.createRange();
+                var dupRange=range.duplicate();
+                dupRange.moveToElementText(field);
+                dupRange.setEndPoint('EndToEnd',range);
+                field.selectionStart=dupRange.text.length-range.text.length;
+                field.selectionEnd=field.selectionStart+ range.text.length;
+            }
+            return field.selectionStart;
+        },
+        /*
+         * 选中指定位置内字符 || 设置光标位置
+         * --- 从start起选中(含第start个)，到第end结束（不含第end个）
+         * --- 若不输入end值，即为设置光标的位置（第start字符后）
+         */
+        iSelectField:function(start,end){
+            var field=this.get(0);
+            //end未定义，则为设置光标位置
+            if(arguments[1]==undefined){
+                end=start;
+            }
+            if(document.selection){
+                //IE
+                var range = field.createTextRange();
+                range.moveEnd('character',-$(this).val().length);
+                range.moveEnd('character',end);
+                range.moveStart('character',start);
+                range.select();
+            }else{
+                //非IE
+                field.setSelectionRange(start,end);
+                $(this).focus();
+            }
+        },
+        /*
+         * 选中指定字符串
+         */
+        iSelectStr:function(str){
+            var field=this.get(0);
+            var i=$(this).val().indexOf(str);
+            i != -1 ? $(this).iSelectField(i,i+str.length) : false;
+        },
+        /*
+         * 在光标之后插入字符串
+         */
+        iAddField:function(str){
+            var field=this.get(0);
+            var v=$(this).val();
+            var len=$(this).val().length;
+            if(document.selection){
+                //IE
+                $(this).focus()
+                document.selection.createRange().text=str;
+            }else{
+                //非IE
+                var selPos=field.selectionStart;
+                $(this).val($(this).val().slice(0,field.selectionStart)+str+$(this).val().slice(field.selectionStart,len));
+                this.iSelectField(selPos+str.length);
+            };
+        },
+        /*
+         * 删除光标前面(+)或者后面(-)的n个字符
+         */
+        iDelField:function(n){
+            var field=this.get(0);
+            var pos=$(this).iGetFieldPos();
+            var v=$(this).val();
+            //大于0则删除后面，小于0则删除前面
+            $(this).val(n>0 ? v.slice(0,pos-n)+v.slice(pos) : v.slice(0,pos)+v.slice(pos-n));
+            $(this).iSelectField(pos-(n<0 ? 0 : n));
+        },
+        /*
+         * 获取光标前面 || 后面指定个数字符
+         * n为负数则获取前面n个字符，正数获取后面n个字符
+         */
+         iGetPosStr:function(n){
+            var field=this.get(0);
+            var pos=$(this).iGetFieldPos();
+            var v=$(this).val();
+            return ( n>0 ? v.slice(pos,pos+n) : v.slice(pos+n,pos) );
+         }
+    });
+})(jQuery);
 
 
 //在光标前插入字符串,暂时没用到
-function InsertAtCursor(myField, myValue) {
+/*function InsertAtCursor(myField, myValue) {
     //IE Support
     if (document.selection) {
         myField.focus();
@@ -84,18 +582,4 @@ function InsertAtCursor(myField, myValue) {
         myField.value += myValue;
         myField.focus();
     }
-}
-//延迟执行最后一次调用的函数
-var _timer = {};
-
-function delay_till_last(id, fn, wait) {
-    if (_timer[id]) {
-        window.clearTimeout(_timer[id]);
-        delete _timer[id];
-    }
-
-    return _timer[id] = window.setTimeout(function() {
-        fn();
-        delete _timer[id];
-    }, wait);
-}
+}*/
