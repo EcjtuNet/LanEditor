@@ -47,9 +47,23 @@ var LanEditor = {
         this.textelem = textelem;
         this.showelem = showelem;
         this.TextElem = $("#" + textelem);
-        this.TextElem.before("<div class=\"_Keyword\" id=\"_Keyword\"><ul id=\"_KeywordLi\"></ul></div>");
+        $("body").append("<div class=\"_Keyword\" id=\"_Keyword\"><ul id=\"_KeywordLi\"></ul></div>");
         this.SKLelem = $("#_Keyword");
         this._timer = {};
+        //对editor元素样式进行默认设置
+        (function(TextElem){
+            TextElem.css({
+                "box-sizing": "border-box",
+                "overflow": "auto",
+                "font-size": "13px",
+                "font-family": "Menlo, Monaco, Consolas, Courier New, monospace",
+                "font-weight": 1.3,
+                "outline": "none",
+                "background-color": "#23241f",
+                "color": "#f8f8f2"
+            });
+        })(this.TextElem);
+        //注册监听
         var TextElem = document.getElementById(textelem);
         if("undefined" != typeof TextElem.addEventListener){
             TextElem.addEventListener("keydown", this.KeyRewrite, false);
@@ -68,6 +82,9 @@ var LanEditor = {
         }else{
             alert("此浏览器太老，建议用chrome浏览器");
         }
+        //初始化提示框对象参数
+        this.SKLPara.Set(false, 0, 0);
+        TextElem.focus();
     },
     //延迟执行最后一次调用的函数
     DelayTillLast: function (id, fn, wait) {
@@ -88,16 +105,68 @@ var LanEditor = {
             hljs.highlightBlock(block);
         });
     },
+    //设置提示框对象参数
+    SKLPara: {
+        show: null,
+        count: null,
+        cs: null,
+        SWL: 0,
+        ResultSet: [],
+        Set: function(show, count, cs) {
+            this.show = show;
+            this.count = count;
+            this.cs = cs;
+            $("._SKLi" + cs).addClass("_limatch");
+        },
+        //获取提示框对象参数
+        Get: function() {
+            return LanEditor.SKLPara;
+        },
+        SetShow: function(show) {
+            this.show = show;
+        },
+        SetCount: function(count) {
+            this.count = count;
+        },
+        SetCS: function(cs, up) {
+            $("._SKLi" + this.cs).removeClass("_limatch");
+            this.cs = cs;
+            $("._SKLi" + cs).addClass("_limatch");
+            var SKLheight = parseInt($("#_Keyword").css("height"));
+            var SKLScrollHeight = $("#_Keyword")[0].scrollHeight;
+            var SKLScrollTop = $("#_Keyword").scrollTop();
+            if(cs == 0){
+                $("#_Keyword").scrollTop(0);
+            }else if (cs == this.count - 1) {
+                $("#_Keyword").scrollTop(SKLScrollHeight);
+            }else if (up == true) {
+                if(cs * 18 < SKLScrollTop) {
+                    var diff = SKLScrollTop - cs * 18;
+                    $("#_Keyword").scrollTop(SKLScrollTop - diff);
+                }
+            }else if ("undefined" == typeof up) {
+                if((cs + 1) * 18 > SKLScrollTop + SKLheight) {
+                    var diff = (cs + 1) * 18 - (SKLScrollTop + SKLheight);
+                    $("#_Keyword").scrollTop(SKLScrollTop + diff);
+                }
+            }
+            
+        }
+    },
     //关键字自动补全，keyup阶段执行
     AutoCompleteKeyword: function(event) {
         var TextElem = $(this);
         var e = event;
         var SKLelem = $("#_Keyword");
+        if(e.which == 38 || e.which == 40) {
+            return;
+        }
         if ((e.which < 65 && e.which > 57 || e.which > 90 || e.which < 48) && e.which != 8) {
             SKLelem.css({
                 "opacity": 0,
                 "z-index": -20
             });
+            LanEditor.SKLPara.SetShow(false);
             return;
         }
         //要匹配的单词
@@ -124,6 +193,7 @@ var LanEditor = {
                 "opacity": 0,
                 "z-index": -20
             });
+            LanEditor.SKLPara.SetShow(false);
         }
     },
     //显示关键字提示列表
@@ -132,7 +202,7 @@ var LanEditor = {
         var SKLelem = this.SKLelem;
         var cursorpos = CursorPos.GetCursorPos(document.getElementById(this.textelem));
         var scrolltop = TextElem.scrollTop();
-        var left = cursorpos.left;
+        var left = cursorpos.left + 2;
         var top = cursorpos.top - scrolltop + 18;
         //查找匹配的单词结果
         var resultset = this.SearchKeyword(word);
@@ -142,6 +212,7 @@ var LanEditor = {
                 "opacity": 0,
                 "z-index": -20
             });
+            LanEditor.SKLPara.SetShow(false);
             return;
         }
         //拼接HTML代码
@@ -153,17 +224,26 @@ var LanEditor = {
                 continue;
             }
             for (var i = 0; i < resultset[key].length; ++i) {
-                html += "<li>" + resultset[key][i] + "</li>";
+                html += "<li class=\"_SKLi" + KeyCount + "\">" + resultset[key][i] + "</li>";
                 KeyCount++;
             }
         }
         $("#_KeywordLi").html(html);
-        //显示DIV框的border需要多加4像素
-        var SKLheight = (KeyCount > 10 ? 180 : KeyCount * 18) + 4;
-        var height = parseInt(TextElem.parent().css("height"));
-        // 判断提示框是否超出边界，是则调整显示位置
-        if (top + SKLheight > height) {
+        LanEditor.SKLPara.Set(true, KeyCount, 0);
+        var SKLheight = (KeyCount > 10 ? 180 : KeyCount * 18);
+        var SKLwidth = parseInt(SKLelem.css("width"));
+        //editor元素距body顶部的高度
+        var TextElemTop = CursorPos._offset(document.getElementById(LanEditor.textelem)).top;
+        var TextElemLeft = CursorPos._offset(document.getElementById(LanEditor.textelem)).left;
+        var TextElemHeight = parseInt(TextElem.css("height"));
+        var TextElemWidth = parseInt(TextElem.css("width"));
+        // 判断提示框是否超出下边界，是则调整在光标的上边
+        if (top + SKLheight > TextElemTop + TextElemHeight) {
             top = top - SKLheight - 18;
+        }
+        // 判断提示框是否超出右边界，是则调整在光标的左边
+        if(left + SKLwidth > TextElemLeft + TextElemWidth){
+            left = left - SKLwidth;
         }
         // console.log("height -> " + height + " SKLheight -> " + SKLheight);
         // 显示提示框
@@ -180,7 +260,9 @@ var LanEditor = {
     SearchKeyword: function(word) {
         var flag = false;
         var resultset = new Array();
-        var count = 0;
+        // 全局的resultset,并且不含正则替换后的值
+        this.SKLPara.ResultSet = new Array();
+        this.SKLPara.SWL = word.length;
         var KeywordSet = this.KeywordSet;
         for (key in KeywordSet) {
             resultset.push(key);
@@ -189,14 +271,12 @@ var LanEditor = {
                 // console.log("in " + Keyword[key][i] + " search -> " + word + " search reg ->" + "/" + word + "/i search flag -> " + Keyword[key][i].search("/" + word + "/i"));
                 var reg = new RegExp("(" + word + ")", "gi");
                 if (KeywordSet[key][i].search(reg) > -1) {
+                    this.SKLPara.ResultSet.push(KeywordSet[key][i]);
                     resultset[key].push(KeywordSet[key][i].replace(reg, "<span class=\"_KeyHL\">$1</span>"));
                     flag = true;
-                    count++;
                 }
             }
         }
-        this.KeywordCount = count;
-        this.SelectKeyword = 0;
         return flag ? resultset : false;
     },
     //符号自动补全，keyup阶段执行
@@ -281,7 +361,8 @@ var LanEditor = {
         if (e.which == 9) {
             e.preventDefault();
             TextElem.iAddField("    ");
-        } else if (e.which == 8) { //退格键删除多个空格
+        //退格键删除多个空格
+        } else if (e.which == 8) {
             //只有光标前一个字符是空格的时候才要判断是否删除多个空格
             if (TextElem.iGetPosStr(-1) == " ") {
                 e.preventDefault();
@@ -306,16 +387,44 @@ var LanEditor = {
                     }
                 }
             }
+        //显示提示框时上下键选择列表项
+        } else if (e.which == 38) {
+            if (LanEditor.SKLPara.show == true) {
+                e.preventDefault();
+                if (LanEditor.SKLPara.cs == 0) {
+                    LanEditor.SKLPara.SetCS(LanEditor.SKLPara.count -1);
+                }else if ( LanEditor.SKLPara.cs > 0) {
+                    LanEditor.SKLPara.SetCS(LanEditor.SKLPara.cs - 1, true);
+                }
+            }
+        //重写下键
+        } else if (e.which == 40) {
+            if (LanEditor.SKLPara.show == true) {
+                e.preventDefault();
+                if (LanEditor.SKLPara.cs == LanEditor.SKLPara.count-1) {
+                    LanEditor.SKLPara.SetCS(0);
+                }else if (LanEditor.SKLPara.cs < LanEditor.SKLPara.count -1) {
+                    LanEditor.SKLPara.SetCS(LanEditor.SKLPara.cs + 1);
+                }
+            }
+        } else if (e.which == 13) {
+            if (LanEditor.SKLPara.show == true) {
+                e.preventDefault();
+                TextElem.iDelField(LanEditor.SKLPara.SWL);
+                TextElem.iAddField(LanEditor.SKLPara.ResultSet[LanEditor.SKLPara.cs]);
+            }
         }
         // console.log("keyCode -> " + e.which);
     }
 };
 
 /* ----------------------------获取光标在文本框的位置-----------------------------------
+ *
  * 获取输入光标在页面中的坐标 
  * 可全局使用，使用方法 CursorPos.GetCursorPos(HTMLElement)
  * @param {HTMLElement} 输入框元素 
  * @return {Object} 返回left和top,bottom 
+ *
  * ------------------------------------------------------------------------------------*/
 
 var CursorPos = {
@@ -454,10 +563,12 @@ var CursorPos = {
 };
 
 /* -----------------------------扩展jquery函数---------------------------------
+ *
  * 文本域光标操作（设置光标，选，添，删，取等）
  * 快速开始
  * 引入jquery和本文件
  * $(element).iGetFieldPos();//获取光标位置
+ *
  * --------------------------------------------------------------------------*/
 (function($){
     

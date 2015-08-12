@@ -6205,6 +6205,7 @@ button.close {
 /* show keyword DIV */
 
 ._Keyword {
+    box-sizing: content-box ;
     margin: 0;
     padding: 0;
 	position: absolute;
@@ -6219,7 +6220,7 @@ button.close {
 	border-radius: 3px;
 	border: 2px solid #999;
 	box-shadow: 0px 0px 9px #fff;
-	transition: 0.5s;
+	transition: 0.3s;
 	opacity: 0;
 	z-index: -20;
 }
@@ -6238,6 +6239,7 @@ button.close {
 	padding: 2px;
 	height: 18px;
 	line-height: 14px;
+    transition: 0.3s;
 }
 ._limatch{
 	background-color: rgba(135,195,250,0.9);
