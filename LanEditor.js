@@ -285,6 +285,9 @@ var LanEditor = {
         var TextElem = $(this);
         //按回车缩进和上一行相同的间距
         if (e.which == 13) {
+            if(LanEditor.SKLPara.show == true){
+                return;
+            }
             var space = 0;
             var i = 2;
             //计算上一行前面的空格缩进个数
@@ -415,6 +418,27 @@ var LanEditor = {
             }
         }
         // console.log("keyCode -> " + e.which);
+    },
+    SaveMD: function() {
+        var fileName = prompt("保存为Markdown文件，请输入文件名","新建Markdown文件");
+        if(fileName == null || fileName == "") {
+            return;
+        }
+        this.ExportFile(fileName + ".md", this.TextElem.val());
+    },
+    SaveHTML: function() {
+
+    },
+    //创建文件下载
+    ExportFile: function(fileName, content) {
+        var aLink = document.createElement('a');
+        var blob = new Blob([content]);
+        var evt = document.createEvent("HTMLEvents");
+        //initEvent 不加后两个参数在FF下会报错, 感谢 Barret Lee 的反馈
+        evt.initEvent("click", false, false);
+        aLink.download = fileName;
+        aLink.href = URL.createObjectURL(blob);
+        aLink.dispatchEvent(evt);
     }
 };
 
