@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"file",
+				"fileName"
+			],
+			[
+				"cont",
+				"continue"
+			],
+			[
+				"var",
+				"varname"
+			],
+			[
+				"iget",
+				"iGetPosStr"
+			],
+			[
+				"insert",
+				"insertStr"
+			],
+			[
 				"show",
 				"show"
 			],
@@ -272,10 +292,6 @@
 				"json"
 			],
 			[
-				"var",
-				"var_dump"
-			],
-			[
 				"pages",
 				"pageSize"
 			],
@@ -498,22 +514,6 @@
 			[
 				"js",
 				"json_result"
-			],
-			[
-				"php",
-				"php"
-			],
-			[
-				"crea",
-				"create_guid"
-			],
-			[
-				"cre",
-				"create_guid"
-			],
-			[
-				"provin",
-				"provinceName"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "LanEditor.css",
 			"settings":
 			{
-				"buffer_size": 2729,
+				"buffer_size": 3368,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,15 +531,7 @@
 			"file": "LanEditor.js",
 			"settings":
 			{
-				"buffer_size": 26303,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 277,
+				"buffer_size": 28837,
 				"line_ending": "Windows"
 			}
 		},
@@ -547,7 +539,15 @@
 			"file": "boots.css",
 			"settings":
 			{
-				"buffer_size": 133363,
+				"buffer_size": 141286,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "highlight/README.md",
+			"settings":
+			{
+				"buffer_size": 3366,
 				"line_ending": "Windows"
 			}
 		},
@@ -555,7 +555,7 @@
 			"file": "demo.html",
 			"settings":
 			{
-				"buffer_size": 1583,
+				"buffer_size": 1582,
 				"line_ending": "Windows"
 			}
 		}
@@ -832,7 +832,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -841,15 +841,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2729,
+						"buffer_size": 3368,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1305,
-								1305
+								2488,
+								2488
 							]
 						],
 						"settings":
@@ -859,10 +859,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 459.0,
+						"translation.y": 2771.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -871,15 +871,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 26303,
+						"buffer_size": 28837,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								518,
-								518
+								17050,
+								17050
 							]
 						],
 						"settings":
@@ -889,55 +889,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2249.0,
+						"translation.y": 7089.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "README.md",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 277,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								277,
-								277
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "boots.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 133363,
+						"buffer_size": 141286,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								133363,
-								133363
+								132698,
+								132698
 							]
 						],
 						"settings":
@@ -947,7 +919,35 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 105299.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "highlight/README.md",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 3366,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -959,15 +959,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1583,
+						"buffer_size": 1582,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								154,
-								154
+								960,
+								960
 							]
 						],
 						"settings":
@@ -976,7 +976,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 153.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,

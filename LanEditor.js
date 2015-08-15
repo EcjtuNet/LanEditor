@@ -51,7 +51,7 @@ var LanEditor = {
         this.SKLelem = $("#_Keyword");
         this._timer = {};
         //对editor元素样式进行默认设置
-        (function(TextElem){
+        (function(TextElem) {
             TextElem.css({
                 "box-sizing": "border-box",
                 "overflow": "auto",
@@ -65,21 +65,21 @@ var LanEditor = {
         })(this.TextElem);
         //注册监听
         var TextElem = document.getElementById(textelem);
-        if("undefined" != typeof TextElem.addEventListener){
+        if ("undefined" != typeof TextElem.addEventListener) {
             TextElem.addEventListener("keydown", this.KeyRewrite, false);
             TextElem.addEventListener("keyup", this.AutoCompleteSymbol, false);
             TextElem.addEventListener("keyup", this.AutoCompleteKeyword, false);
-            TextElem.addEventListener("keyup", function(){
+            TextElem.addEventListener("keyup", function() {
                 LanEditor.DelayTillLast.call(LanEditor, "RenderHTML", LanEditor.RenderHTML, 300);
             }, false);
-        }else if("undefined" != typeof TextElem.attachEvent){
+        } else if ("undefined" != typeof TextElem.attachEvent) {
             TextElem.attachEvent("keydown", this.KeyRewrite);
             TextElem.attachEvent("keyup", this.AutoCompleteSymbol);
             TextElem.attachEvent("keyup", this.AutoCompleteKeyword);
-            TextElem.attachEvent("keyup", function(){
+            TextElem.attachEvent("keyup", function() {
                 LanEditor.DelayTillLast.call(LanEditor, "RenderHTML", LanEditor.RenderHTML);
             }, 300);
-        }else{
+        } else {
             alert("此浏览器太老，建议用chrome浏览器");
         }
         //初始化提示框对象参数
@@ -87,7 +87,7 @@ var LanEditor = {
         TextElem.focus();
     },
     //延迟执行最后一次调用的函数
-    DelayTillLast: function (id, fn, wait) {
+    DelayTillLast: function(id, fn, wait) {
         if (this._timer[id]) {
             window.clearTimeout(this._timer[id]);
             delete this._timer[id];
@@ -135,22 +135,22 @@ var LanEditor = {
             var SKLheight = parseInt($("#_Keyword").css("height"));
             var SKLScrollHeight = $("#_Keyword")[0].scrollHeight;
             var SKLScrollTop = $("#_Keyword").scrollTop();
-            if(cs == 0){
+            if (cs == 0) {
                 $("#_Keyword").scrollTop(0);
-            }else if (cs == this.count - 1) {
+            } else if (cs == this.count - 1) {
                 $("#_Keyword").scrollTop(SKLScrollHeight);
-            }else if (up == true) {
-                if(cs * 18 < SKLScrollTop) {
+            } else if (up == true) {
+                if (cs * 18 < SKLScrollTop) {
                     var diff = SKLScrollTop - cs * 18;
                     $("#_Keyword").scrollTop(SKLScrollTop - diff);
                 }
-            }else if ("undefined" == typeof up) {
-                if((cs + 1) * 18 > SKLScrollTop + SKLheight) {
+            } else if ("undefined" == typeof up) {
+                if ((cs + 1) * 18 > SKLScrollTop + SKLheight) {
                     var diff = (cs + 1) * 18 - (SKLScrollTop + SKLheight);
                     $("#_Keyword").scrollTop(SKLScrollTop + diff);
                 }
             }
-            
+
         }
     },
     //关键字自动补全，keyup阶段执行
@@ -158,7 +158,7 @@ var LanEditor = {
         var TextElem = $(this);
         var e = event;
         var SKLelem = $("#_Keyword");
-        if(e.which == 38 || e.which == 40) {
+        if (e.which == 38 || e.which == 40) {
             return;
         }
         if ((e.which < 65 && e.which > 57 || e.which > 90 || e.which < 48) && e.which != 8) {
@@ -216,7 +216,7 @@ var LanEditor = {
             return;
         }
         //拼接HTML代码
-        var KeyCount=0;
+        var KeyCount = 0;
         var html = "";
         for (key in resultset) {
             //过滤键名
@@ -242,7 +242,7 @@ var LanEditor = {
             top = top - SKLheight - 18;
         }
         // 判断提示框是否超出右边界，是则调整在光标的左边
-        if(left + SKLwidth > TextElemLeft + TextElemWidth){
+        if (left + SKLwidth > TextElemLeft + TextElemWidth) {
             left = left - SKLwidth;
         }
         // console.log("height -> " + height + " SKLheight -> " + SKLheight);
@@ -285,25 +285,11 @@ var LanEditor = {
         var TextElem = $(this);
         //按回车缩进和上一行相同的间距
         if (e.which == 13) {
-            if(LanEditor.SKLPara.show == true){
+            if (LanEditor.SKLPara.show == true) {
                 return;
             }
-            var space = 0;
-            var i = 2;
-            //计算上一行前面的空格缩进个数
-            while (TextElem.iGetPosStr(-i).charAt(0) != "\n" && TextElem.iGetPosStr(-i).charAt(0) != "\r\n") {
-                if (TextElem.iGetPosStr(-i).charAt(0) == " ") {
-                    space++;
-                } else if (TextElem.iGetPosStr(-i).charAt(0) == "\t") {
-                    space += 4;
-                } else {
-                    space = 0;
-                }
-                ++i;
-                if (i > TextElem.val().length) {
-                    break;
-                }
-            }
+            // 获取上一行的缩进个数
+            var space = TextElem.iGetSpaceNum();
             //如果是成对{}按回车键，则多加4个空格缩进
             var isfunc = false;
             var pre = TextElem.iGetPosStr(-2);
@@ -315,12 +301,14 @@ var LanEditor = {
                 TextElem.iAddField(" ");
             }
             var pos = TextElem.iGetFieldPos();
+            var insertStr = "";
             if (isfunc) {
                 TextElem.iAddField("\n");
                 for (var i = 0; i < space - 4; ++i) {
-                    TextElem.iAddField(" ");
+                    insertStr += " ";
                 }
             }
+            TextElem.iAddField(insertStr);
             TextElem.iSelectField(pos);
         } else if (e.shiftKey && e.which == 57) { // ( 左括号自动补全
             TextElem.iAddField(")");
@@ -364,7 +352,7 @@ var LanEditor = {
         if (e.which == 9) {
             e.preventDefault();
             TextElem.iAddField("    ");
-        //退格键删除多个空格
+            //退格键删除多个空格
         } else if (e.which == 8) {
             //只有光标前一个字符是空格的时候才要判断是否删除多个空格
             if (TextElem.iGetPosStr(-1) == " ") {
@@ -390,23 +378,23 @@ var LanEditor = {
                     }
                 }
             }
-        //显示提示框时上下键选择列表项
+            //显示提示框时上下键选择列表项
         } else if (e.which == 38) {
             if (LanEditor.SKLPara.show == true) {
                 e.preventDefault();
                 if (LanEditor.SKLPara.cs == 0) {
-                    LanEditor.SKLPara.SetCS(LanEditor.SKLPara.count -1);
-                }else if ( LanEditor.SKLPara.cs > 0) {
+                    LanEditor.SKLPara.SetCS(LanEditor.SKLPara.count - 1);
+                } else if (LanEditor.SKLPara.cs > 0) {
                     LanEditor.SKLPara.SetCS(LanEditor.SKLPara.cs - 1, true);
                 }
             }
-        //重写下键
+            //重写下键
         } else if (e.which == 40) {
             if (LanEditor.SKLPara.show == true) {
                 e.preventDefault();
-                if (LanEditor.SKLPara.cs == LanEditor.SKLPara.count-1) {
+                if (LanEditor.SKLPara.cs == LanEditor.SKLPara.count - 1) {
                     LanEditor.SKLPara.SetCS(0);
-                }else if (LanEditor.SKLPara.cs < LanEditor.SKLPara.count -1) {
+                } else if (LanEditor.SKLPara.cs < LanEditor.SKLPara.count - 1) {
                     LanEditor.SKLPara.SetCS(LanEditor.SKLPara.cs + 1);
                 }
             }
@@ -422,8 +410,8 @@ var LanEditor = {
     File: {
         // 保存为md文件
         ExportMD: function() {
-            var fileName = prompt("保存为Markdown文件，请输入文件名","新建Markdown文件");
-            if(fileName == null || fileName == "") {
+            var fileName = prompt("保存为Markdown文件，请输入文件名", "新建Markdown文件");
+            if (fileName == null || fileName == "") {
                 return;
             }
             this.ExportFile(fileName + ".md", LanEditor.TextElem.val());
@@ -445,20 +433,48 @@ var LanEditor = {
         },
         //存储文件到localstorage
         SaveFileToLocal: function(fileName, content) {
-            if("undefined" == localStorage) {
+            if ("undefined" == localStorage) {
                 return "localStorage not support";
             }
-            if(fileName == null || content == null) {
+            if (fileName == null || content == null) {
                 return "param wrong";
             }
             var fileName = LanEditor.Time.GetTimestamp() + "$" + fileName;
             localStorage.setItem(fileName, content);
             return "OK";
+        },
+        // 获取文件列表
+        GetFileList: function() {
+            var filelist = new Array();
+            var i=0;
+            var temp;
+            for(varname in localStorage) {
+                filelist[i] = {};
+                i++;
+                temp = varname.split("$")[0];
+                // 判断当前变量是否是文件名
+                if(temp.length == 10 && !isNaN(temp)) {
+                    filelist[i].name = varname.split("$")[1];
+                    filelist[i].time = temp;
+                }else{
+                    continue;
+                }
+            }
+            return filelist;
+        },
+        // 获取文件
+        GetFileContent: function(fileName) {
+            for(varname in localStorage) {
+                if(varname.split("$")[0].length == 10 && varname.split("$")[1] == fileName) {
+                    return localStorage.getItem(varname);
+                }
+            }
+            return false;
         }
     },
     Time: {
         GetTimestamp: function() {
-            return Math.round(new Date().getTime()/1000);
+            return Math.round(new Date().getTime() / 1000);
         },
         GetTimeString: function(timestamp) {
             var timestamp = new Date(timestamp * 1000);
@@ -619,24 +635,24 @@ var CursorPos = {
  * $(element).iGetFieldPos();//获取光标位置
  *
  * --------------------------------------------------------------------------*/
-(function($){
-    
+(function($) {
+
     $.fn.extend({
         /*
          * 获取光标所在位置
          */
-        iGetFieldPos:function(){
-            var field=this.get(0);
-            if(document.selection){
+        iGetFieldPos: function() {
+            var field = this.get(0);
+            if (document.selection) {
                 //IE
                 $(this).focus();
-                var sel=document.selection;
-                var range=sel.createRange();
-                var dupRange=range.duplicate();
+                var sel = document.selection;
+                var range = sel.createRange();
+                var dupRange = range.duplicate();
                 dupRange.moveToElementText(field);
-                dupRange.setEndPoint('EndToEnd',range);
-                field.selectionStart=dupRange.text.length-range.text.length;
-                field.selectionEnd=field.selectionStart+ range.text.length;
+                dupRange.setEndPoint('EndToEnd', range);
+                field.selectionStart = dupRange.text.length - range.text.length;
+                field.selectionEnd = field.selectionStart + range.text.length;
             }
             return field.selectionStart;
         },
@@ -645,72 +661,100 @@ var CursorPos = {
          * --- 从start起选中(含第start个)，到第end结束（不含第end个）
          * --- 若不输入end值，即为设置光标的位置（第start字符后）
          */
-        iSelectField:function(start,end){
-            var field=this.get(0);
+        iSelectField: function(start, end) {
+            var field = this.get(0);
             //end未定义，则为设置光标位置
-            if(arguments[1]==undefined){
-                end=start;
+            if (arguments[1] == undefined) {
+                end = start;
             }
-            if(document.selection){
+            if (document.selection) {
                 //IE
                 var range = field.createTextRange();
-                range.moveEnd('character',-$(this).val().length);
-                range.moveEnd('character',end);
-                range.moveStart('character',start);
+                range.moveEnd('character', -$(this).val().length);
+                range.moveEnd('character', end);
+                range.moveStart('character', start);
                 range.select();
-            }else{
+            } else {
                 //非IE
-                field.setSelectionRange(start,end);
+                field.setSelectionRange(start, end);
                 $(this).focus();
             }
         },
         /*
          * 选中指定字符串
          */
-        iSelectStr:function(str){
-            var field=this.get(0);
-            var i=$(this).val().indexOf(str);
-            i != -1 ? $(this).iSelectField(i,i+str.length) : false;
+        iSelectStr: function(str) {
+            var field = this.get(0);
+            var i = $(this).val().indexOf(str);
+            i != -1 ? $(this).iSelectField(i, i + str.length) : false;
         },
         /*
          * 在光标之后插入字符串
          */
-        iAddField:function(str){
-            var field=this.get(0);
-            var v=$(this).val();
-            var len=$(this).val().length;
-            if(document.selection){
+        iAddField: function(str) {
+            var field = this.get(0);
+            var v = $(this).val();
+            var len = $(this).val().length;
+            if (document.selection) {
                 //IE
                 $(this).focus()
-                document.selection.createRange().text=str;
-            }else{
+                document.selection.createRange().text = str;
+            } else {
                 //非IE
-                var selPos=field.selectionStart;
-                $(this).val($(this).val().slice(0,field.selectionStart)+str+$(this).val().slice(field.selectionStart,len));
-                this.iSelectField(selPos+str.length);
+                var selPos = field.selectionStart;
+                $(this).val($(this).val().slice(0, field.selectionStart) + str + $(this).val().slice(field.selectionStart, len));
+                this.iSelectField(selPos + str.length);
             };
         },
         /*
          * 删除光标前面(+)或者后面(-)的n个字符
          */
-        iDelField:function(n){
-            var field=this.get(0);
-            var pos=$(this).iGetFieldPos();
-            var v=$(this).val();
+        iDelField: function(n) {
+            var field = this.get(0);
+            var pos = $(this).iGetFieldPos();
+            var v = $(this).val();
             //大于0则删除后面，小于0则删除前面
-            $(this).val(n>0 ? v.slice(0,pos-n)+v.slice(pos) : v.slice(0,pos)+v.slice(pos-n));
-            $(this).iSelectField(pos-(n<0 ? 0 : n));
+            $(this).val(n > 0 ? v.slice(0, pos - n) + v.slice(pos) : v.slice(0, pos) + v.slice(pos - n));
+            $(this).iSelectField(pos - (n < 0 ? 0 : n));
         },
         /*
          * 获取光标前面 || 后面指定个数字符
          * n为负数则获取前面n个字符，正数获取后面n个字符
          */
-         iGetPosStr:function(n){
-            var field=this.get(0);
-            var pos=$(this).iGetFieldPos();
-            var v=$(this).val();
-            return ( n>0 ? v.slice(pos,pos+n) : v.slice(pos+n,pos) );
-         }
+        iGetPosStr: function(n) {
+            var field = this.get(0);
+            var pos = $(this).iGetFieldPos();
+            var v = $(this).val();
+            return (n > 0 ? v.slice(pos, pos + n) : v.slice(pos + n, pos));
+        },
+        /*
+         * 获取前一行的空格缩进个数或是本行前面的空格缩进个数
+         * 如果光标前一个字符不是换行\n || \r\n ，则获取本行前面的缩进，否则获取上一行
+         */
+        iGetSpaceNum: function() {
+            var TextElem = $(this);
+            var space = 0;
+            var i = 1;
+            // 如果光标前一个字符是换行，则跳过本行的换行符，查找上一行
+            if (TextElem.iGetPosStr(-1) == "\n" || TextElem.iGetPosStr(-1) == "\r\n") {
+                i = 2;
+            }
+            //计算上一行前面的空格缩进个数
+            while (TextElem.iGetPosStr(-i).charAt(0) != "\n" && TextElem.iGetPosStr(-i).charAt(0) != "\r\n" && TextElem.iGetPosStr(-i).charAt(0) != "") {
+                if (TextElem.iGetPosStr(-i).charAt(0) == " ") {
+                    space++;
+                } else if (TextElem.iGetPosStr(-i).charAt(0) == "\t") {
+                    space += 4;
+                } else {
+                    space = 0;
+                }
+                ++i;
+                if (i > TextElem.val().length) {
+                    break;
+                }
+            }
+            return space;
+        }
     });
 })(jQuery);
 
