@@ -439,23 +439,27 @@ var LanEditor = {
             if (fileName == null || content == null) {
                 return "param wrong";
             }
-            var fileName = LanEditor.Time.GetTimestamp() + "$" + fileName;
-            localStorage.setItem(fileName, content);
+            var filename = LanEditor.Time.GetTimestamp() + "$" + fileName;
+            for(varname in localStorage) {
+                if(varname.split("$")[0].length == 10 && varname.split("$")[1] == fileName) {
+                    filename = varname.split("$")[0] + "$" + fileName;
+                }
+            }
+            localStorage.setItem(filename, content);
             return "OK";
         },
         // 获取文件列表
         GetFileList: function() {
             var filelist = new Array();
-            var i=0;
             var temp;
             for(varname in localStorage) {
-                filelist[i] = {};
-                i++;
                 temp = varname.split("$")[0];
                 // 判断当前变量是否是文件名
                 if(temp.length == 10 && !isNaN(temp)) {
-                    filelist[i].name = varname.split("$")[1];
-                    filelist[i].time = temp;
+                    filelist.push({
+                        name: varname.split("$")[1],
+                        time: temp
+                    });
                 }else{
                     continue;
                 }

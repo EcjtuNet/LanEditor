@@ -242,3 +242,185 @@ pre code {
     border: 0;
     color: red;
 }
+
+._LanEditorBg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin: auto auto;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: #333;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+._LEBorder {
+    overflow: hidden;
+    position: fixed;
+    width: 480px;
+    height: 320px;
+    margin: auto auto;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+    right: 0%;
+    border: none;
+    background-color: #eee;
+    transition: 0.8s;
+}
+
+._LEMenuList {
+    list-style: none;
+    position: relative;
+    width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    background-color: #aa9b83;
+}
+
+._LEMenuList li {
+    float: left;
+    box-sizing: border-box;
+    width: 50%;
+    height: 30px;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+._LEMenuList li:hover {
+    background-color: #948266;
+}
+
+._MenuListSe {
+    background-color: #948266;
+}
+
+._LEContent {
+    position: relative;
+    width: 100%;
+    height: 290px;
+    overflow: hidden;
+}
+
+._LEContent div {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    transition: 0.5s;
+}
+._LEFilelist p {
+    width: 100%;
+    height: 26px;
+    background-color: #f0e1c8;
+}
+#_LENName {
+    box-sizing: border-box;
+    outline: none;
+    font-family: "微软雅黑";
+    width: 380px;
+    height: 100%;
+    font-size: 14px;
+    color: #555;
+    overflow: hidden;
+    padding: 0;
+    border: 5px solid #f0e1c8;
+}
+#_LEFNB {
+    background-color: #f0e1c8;
+    display: inline-block;
+    box-sizing: border-box;
+    font-family: "微软雅黑";
+    float: right;
+    color: #3e7bf8;
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    cursor: pointer;
+}
+#_LEFilelist ul{
+    list-style: none;
+    overflow: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+#_LEFilelist ul li {
+    box-sizing: border-box;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 22px;
+    padding: 0px;
+    border: 0px;
+    margin-bottom: 1px;
+    background-color: #f0e1c8;
+}
+#_LEFilelist ul li span {
+    display: inline-block;
+    height: 22px;
+    float: right;
+    padding: 2px;
+    font-size: 12px;
+    background-color: #f8ebd5;
+    cursor: pointer;
+}
+._LEFName {
+    display: inline-block;
+    overflow: hidden;
+    height: 22px;
+    width: 350px;
+    font-size: 15px;
+    float: left !important;
+    cursor: pointer;
+}
+/* ._LEFT {
+    display: inline-block;
+    height: 22px;
+    float: right;
+    padding: 2px;
+    font-size: 12px;
+    background-color: #aa9b83;
+    cursor: pointer;
+}
+._LEFD {
+    display: inline-block;
+    height: 22px;
+    float: right;
+    padding: 2px;
+    font-size: 12px;
+    background-color: #aa9b83;
+    cursor: pointer;
+}
+._LEFM {
+    display: inline-block;
+    height: 22px;
+    float: right;
+    padding: 2px;
+    font-size: 12px;
+    background-color: #aa9b83;
+    cursor: pointer;
+}
+._LEFH {
+    display: inline-block;
+    height: 22px;
+    float: right;
+    padding: 2px;
+    font-size: 12px;
+    background-color: #aa9b83;
+    cursor: pointer;
+} */
+#_LEFilelist ul li span:hover {
+    background-color: #948266;
+}
