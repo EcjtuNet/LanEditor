@@ -47,7 +47,34 @@ var LanEditor = {
         this.textelem = textelem;
         this.showelem = showelem;
         this.TextElem = $("#" + textelem);
-        $("body").append("<div class=\"_Keyword\" id=\"_Keyword\"><ul id=\"_KeywordLi\"></ul></div>");
+        $("body").append(
+            "<div class=\"_Keyword\" id=\"_Keyword\"><ul id=\"_KeywordLi\"></ul></div>" +
+            '<div class="_LanEditorBg">' +
+            '</div>' +
+            '<div class="_LEBorder">' +
+            '<ul class="_LEMenuList">' +
+            '<li class="_MenuListSe">文件列表</li>' +
+            '<li>选项设置</li>' +
+            '</ul>' +
+            '<div class="_LEContent">' +
+            '<div id="_LEFilelist">' +
+            '<p>' +
+            '<input type="text" id="_LENName">' +
+            '<span id="_LEFNB">新建</span>' +
+            '</p>' +
+            '<ul>' +
+            '<li>' +
+            '<span class="_LEFName" title="LanEditor文档说明">LanEditor文档说明LanEditor文档说明</span>' +
+            '<span class="_LEFM" title="导出Markdown文件到本地">MD</span>' +
+            '<span class="_LEFH" title="导出HTML文件到本地">HTML</span>' +
+            '<span class="_LEFD" title="删除文件">删除</span>' +
+            '<span class="_LEFT" title="创建日期">8月16</span>' +
+            '</li>' +
+            '</ul>' +
+            '</div>' +
+            '</div>' +
+            '</div>'
+        );
         this.SKLelem = $("#_Keyword");
         this._timer = {};
         //对editor元素样式进行默认设置
@@ -85,6 +112,10 @@ var LanEditor = {
         //初始化提示框对象参数
         this.SKLPara.Set(false, 0, 0);
         TextElem.focus();
+        //---------------------------------事件代理
+        $("#_LEFilelist ul").delegate("span", "click", function(e) {
+            console.log(e.target);
+        });
     },
     //延迟执行最后一次调用的函数
     DelayTillLast: function(id, fn, wait) {
@@ -440,8 +471,8 @@ var LanEditor = {
                 return "param wrong";
             }
             var filename = LanEditor.Time.GetTimestamp() + "$" + fileName;
-            for(varname in localStorage) {
-                if(varname.split("$")[0].length == 10 && varname.split("$")[1] == fileName) {
+            for (varname in localStorage) {
+                if (varname.split("$")[0].length == 10 && varname.split("$")[1] == fileName) {
                     filename = varname.split("$")[0] + "$" + fileName;
                 }
             }
@@ -452,15 +483,15 @@ var LanEditor = {
         GetFileList: function() {
             var filelist = new Array();
             var temp;
-            for(varname in localStorage) {
+            for (varname in localStorage) {
                 temp = varname.split("$")[0];
                 // 判断当前变量是否是文件名
-                if(temp.length == 10 && !isNaN(temp)) {
+                if (temp.length == 10 && !isNaN(temp)) {
                     filelist.push({
                         name: varname.split("$")[1],
                         time: temp
                     });
-                }else{
+                } else {
                     continue;
                 }
             }
@@ -468,8 +499,8 @@ var LanEditor = {
         },
         // 获取文件
         GetFileContent: function(fileName) {
-            for(varname in localStorage) {
-                if(varname.split("$")[0].length == 10 && varname.split("$")[1] == fileName) {
+            for (varname in localStorage) {
+                if (varname.split("$")[0].length == 10 && varname.split("$")[1] == fileName) {
                     return localStorage.getItem(varname);
                 }
             }

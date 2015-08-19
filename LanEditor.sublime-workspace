@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"data",
+				"datas"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
 				"margin",
 				"margin-bottom"
 			],
@@ -148,10 +160,6 @@
 				"AutoCompleteSymbol"
 			],
 			[
-				"pad",
-				"padding"
-			],
-			[
 				"borer",
 				"border-right"
 			],
@@ -278,10 +286,6 @@
 			[
 				"pay",
 				"paysum"
-			],
-			[
-				"data",
-				"databases"
 			],
 			[
 				"da",
@@ -468,10 +472,6 @@
 				"password"
 			],
 			[
-				"min",
-				"min-height"
-			],
-			[
 				"cl",
 				"closeBox"
 			],
@@ -523,7 +523,7 @@
 			"file": "LanEditor.css",
 			"settings":
 			{
-				"buffer_size": 6612,
+				"buffer_size": 6586,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "LanEditor.js",
 			"settings":
 			{
-				"buffer_size": 29042,
+				"buffer_size": 30208,
 				"line_ending": "Windows"
 			}
 		},
@@ -555,7 +555,7 @@
 			"file": "demo.html",
 			"settings":
 			{
-				"buffer_size": 2939,
+				"buffer_size": 1583,
 				"line_ending": "Windows"
 			}
 		}
@@ -625,6 +625,8 @@
 	],
 	"file_history":
 	[
+		"/C/Documents and Settings/Administrator/桌面/buy.php",
+		"/C/Documents and Settings/Administrator/桌面/route.php",
 		"/C/Documents and Settings/Administrator/桌面/新建Markdown文件.md",
 		"/C/xampp/htdocs/LanEditor/demo.css",
 		"/C/xampp/htdocs/LanEditor/bootstrap.css",
@@ -750,9 +752,7 @@
 		"/Users/BluesDream/Documents/git/SunYuezhenGP/chat/js/index.js",
 		"/Users/BluesDream/Sites/SunYuezhenGP/manager/js/login.js",
 		"/Users/BluesDream/Sites/SunYuezhenGP/chat/ajax_chat.php",
-		"/Users/BluesDream/Sites/SunYuezhenGP/chat/service/login.js",
-		"/Users/BluesDream/Sites/SunYuezhenGP/chat/service/ajax_service.php",
-		"/Users/BluesDream/Sites/SunYuezhenGP/zhuce.html"
+		"/Users/BluesDream/Sites/SunYuezhenGP/chat/service/login.js"
 	],
 	"find":
 	{
@@ -833,7 +833,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -842,15 +842,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6612,
+						"buffer_size": 6586,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6521,
-								6521
+								6447,
+								6447
 							]
 						],
 						"settings":
@@ -860,10 +860,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 7736.0,
+						"translation.y": 7489.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -872,15 +872,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 29042,
+						"buffer_size": 30208,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								17060,
-								17060
+								1361,
+								1361
 							]
 						],
 						"settings":
@@ -890,10 +890,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8436.0,
+						"translation.y": 14884.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -923,7 +923,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -960,15 +960,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2939,
+						"buffer_size": 1583,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2047,
-								2047
+								1567,
+								1567
 							]
 						],
 						"settings":
@@ -977,7 +977,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1197.0,
+						"translation.y": 1026.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
