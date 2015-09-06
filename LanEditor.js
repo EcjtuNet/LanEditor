@@ -49,9 +49,9 @@ var LanEditor = {
         this.TextElem = $("#" + textelem);
         $("body").append(
             "<div class=\"_Keyword\" id=\"_Keyword\"><ul id=\"_KeywordLi\"></ul></div>" +
-            '<div class="_LanEditorBg">' +
+            '<div class="_LanEditorBg" id="_LanEditorBg">' +
             '</div>' +
-            '<div class="_LEBorder">' +
+            '<div class="_LEBorder" id="_LEBorder">' +
             '<ul class="_LEMenuList">' +
             '<li class="_MenuListSe">文件列表</li>' +
             '<li>选项设置</li>' +
@@ -75,6 +75,10 @@ var LanEditor = {
             '</div>' +
             '</div>'
         );
+        //初始化菜单对象
+        this.Menu.MenuObj = $("#_LEBorder");
+        //初始化背景对象
+        this.Background.BackObj = $("#_LanEditorBg");
         this.SKLelem = $("#_Keyword");
         this._timer = {};
         //对editor元素样式进行默认设置
@@ -93,6 +97,9 @@ var LanEditor = {
         //注册监听
         var TextElem = document.getElementById(textelem);
         if ("undefined" != typeof TextElem.addEventListener) {
+            window.addEventListener("keydown", function(event) {
+                LanEditor.Menu.Toggle.call(LanEditor.Menu, event);
+            }, false);
             TextElem.addEventListener("keydown", this.KeyRewrite, false);
             TextElem.addEventListener("keyup", this.AutoCompleteSymbol, false);
             TextElem.addEventListener("keyup", this.AutoCompleteKeyword, false);
@@ -100,6 +107,9 @@ var LanEditor = {
                 LanEditor.DelayTillLast.call(LanEditor, "RenderHTML", LanEditor.RenderHTML, 300);
             }, false);
         } else if ("undefined" != typeof TextElem.attachEvent) {
+            window.attachEvent("keydown", function(event) {
+                LanEditor.Menu.Toggle.call(LanEditor.Menu, event);
+            });
             TextElem.attachEvent("keydown", this.KeyRewrite);
             TextElem.attachEvent("keyup", this.AutoCompleteSymbol);
             TextElem.attachEvent("keyup", this.AutoCompleteKeyword);
@@ -436,8 +446,9 @@ var LanEditor = {
                 TextElem.iAddField(LanEditor.SKLPara.ResultSet[LanEditor.SKLPara.cs]);
             }
         }
-        // console.log("keyCode -> " + e.which);
+        console.log("keyCode -> " + e.which);
     },
+    //文件对象
     File: {
         // 保存为md文件
         ExportMD: function() {
@@ -507,6 +518,108 @@ var LanEditor = {
             return false;
         }
     },
+    //菜单对象
+    Menu: {
+        IsShow: false,
+        MenuObj: null,
+        //切换显示状态
+        Toggle: function(e) {
+            if (e.which == 27) {
+                e.preventDefault();
+                if (this.IsShow) {
+                    LanEditor.Background.Show(false);
+                    this.MenuObj.css({
+                        "height": "30px",
+                        "right": "100%"
+                    });
+                    setTimeout(function() {
+                        LanEditor.Menu.MenuObj.css({
+                            "display": "none"
+                        });
+                    }, 800);
+                    this.IsShow = false;
+                } else {
+                    LanEditor.Background.Show(true);
+                    this.MenuObj.css({
+                        "display": "block"
+                    });
+                    setTimeout(function() {
+                        LanEditor.Menu.MenuObj.css({
+                            "height": "320px",
+                            "right": "0%"
+                        });
+                    });
+                    this.IsShow = true;
+                }
+            }
+            console.log("IsShow -> " + this.IsShow);
+        },
+        //设置是否显示菜单，true显示，false不显示
+        Show: function(IsShow) {
+            if(IsShow) {
+                this.MenuObj.css({
+                    "display": "block"
+                });
+                setTimeout(function(){
+                    LanEditor.Menu.MenuObj.css({
+                        "height": "320px",
+                        "right": "0%"
+                    });
+                }, 800);
+                this.IsShow = true;
+            } else {
+                this.MenuObj.css({
+                    "height": "30px",
+                    "right": "100%"
+                });
+                setTimeout(function(){
+                    LanEditor.Menu.MenuObj.css({
+                        "display": "none"
+                    });
+                }, 800);
+                this.IsShow = false;
+            }
+        }
+    },
+    //背景遮罩层对象
+    Background: {
+        IsShow: false,
+        BackObj: null,
+        //切换显示状态
+        Toggle: function() {
+            if (this.IsShow) {
+                this.BackObj.css({
+                    "opacity": 0
+                });
+                setTimeout(function() {
+                    LanEditor.Background.BackObj.css({
+                        "display": "none"
+                    });
+                }, 800);
+                this.IsShow = false;
+            } else {
+                this.BackObj.css({
+                    "display": "block"
+                });
+                setTimeout(function() {
+                    LanEditor.Background.BackObj.css({
+                        "opacity": 0.8
+                    });
+                }, 10);
+                this.IsShow = true;
+            }
+        },
+        //是否显示背景遮罩层 false不显示，true显示
+        Show: function(IsShow) {
+            if(IsShow) {
+                this.IsShow = false;
+            }else {
+                this.IsShow = true;
+            }
+            this.Toggle();
+        }
+    },
+    //时间对象
     Time: {
         GetTimestamp: function() {
             return Math.round(new Date().getTime() / 1000);
