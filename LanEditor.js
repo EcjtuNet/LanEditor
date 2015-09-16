@@ -63,13 +63,6 @@ var LanEditor = {
             '<span id="_LEFNB">新建</span>' +
             '</p>' +
             '<ul>' +
-            '<li>' +
-            '<span class="_LEFName" title="LanEditor文档说明">LanEditor文档说明LanEditor文档说明</span>' +
-            '<span class="_LEFM" title="导出Markdown文件到本地">MD</span>' +
-            '<span class="_LEFH" title="导出HTML文件到本地">HTML</span>' +
-            '<span class="_LEFD" title="删除文件">删除</span>' +
-            '<span class="_LEFT" title="创建日期">8月16</span>' +
-            '</li>' +
             '</ul>' +
             '</div>' +
             '</div>' +
@@ -86,7 +79,7 @@ var LanEditor = {
             TextElem.css({
                 "box-sizing": "border-box",
                 "overflow": "auto",
-                "font-size": "13px",
+                "font-size": "16px",
                 "font-family": "Menlo, Monaco, Consolas, Courier New, monospace",
                 "font-weight": 1.3,
                 "outline": "none",
@@ -99,12 +92,19 @@ var LanEditor = {
         if ("undefined" != typeof TextElem.addEventListener) {
             window.addEventListener("keydown", function(event) {
                 LanEditor.Menu.Toggle.call(LanEditor.Menu, event);
-            }, false);
+            }, true);
             TextElem.addEventListener("keydown", this.KeyRewrite, false);
             TextElem.addEventListener("keyup", this.AutoCompleteSymbol, false);
             TextElem.addEventListener("keyup", this.AutoCompleteKeyword, false);
             TextElem.addEventListener("keyup", function() {
+                // 保存文件
+                LanEditor.File.SaveFile();
+                // 渲染md
                 LanEditor.DelayTillLast.call(LanEditor, "RenderHTML", LanEditor.RenderHTML, 300);
+            }, false);
+            document.getElementById("_LEFNB").addEventListener("click", function() {
+                LanEditor.File.NewFile($("#_LENName").val());
+                LanEditor.File.Refresh($("#_LEFilelist ul"));
             }, false);
         } else if ("undefined" != typeof TextElem.attachEvent) {
             window.attachEvent("keydown", function(event) {
@@ -114,17 +114,51 @@ var LanEditor = {
             TextElem.attachEvent("keyup", this.AutoCompleteSymbol);
             TextElem.attachEvent("keyup", this.AutoCompleteKeyword);
             TextElem.attachEvent("keyup", function() {
+                LanEditor.File.SaveFile();
                 LanEditor.DelayTillLast.call(LanEditor, "RenderHTML", LanEditor.RenderHTML);
             }, 300);
+            document.getElementById("_LEFNB").attachEvent("click", function() {
+                LanEditor.File.NewFile($("#_LENName").val());
+                LanEditor.File.Refresh($("#_LEFilelist ul"));
+            });
         } else {
             alert("此浏览器太老，建议用chrome浏览器");
         }
         //初始化提示框对象参数
         this.SKLPara.Set(false, 0, 0);
         TextElem.focus();
-        //---------------------------------事件代理
+        //---------------------------文件列表事件代理
         $("#_LEFilelist ul").delegate("span", "click", function(e) {
-            console.log(e.target);
+            // 打开文件
+            if ($(e.target).hasClass("_LEFName")) {
+                var filename = $(e.target).text();
+                var content = LanEditor.File.GetFileContent(filename);
+                LanEditor.TextElem.val( content );
+                LanEditor.File.CurOpenFile.name = filename;
+                LanEditor.File.CurOpenFile.content = content;
+                LanEditor.RenderHTML();
+            // 导出markdown文件
+            } else if ($(e.target).hasClass("_LEFM")) {
+                var filename = $(e.target).prev().text();
+                var content = LanEditor.File.GetFileContent(filename);
+                LanEditor.File.ExportMD(content);
+            // 导出HTML文件
+            } else if ($(e.target).hasClass("_LEFH")) {
+                var filename = $(e.target).prev().prev().text();
+                var content = LanEditor.File.GetFileContent(filename);
+                LanEditor.File.ExportHTML(content);
+            // 删除文件
+            } else if ($(e.target).hasClass("_LEFD")) {
+                var filename = $(e.target).prev().prev().prev().text();
+                // 删除的是否是当前正在编辑的文件
+                if( filename == LanEditor.File.CurOpenFile.name ) {
+                    LanEditor.File.CurOpenFile.name = null;
+                    LanEditor.File.CurOpenFile.content = null;
+                    LanEditor.File.CurOpenFile.time = null;
+                }
+                LanEditor.File.DeleteFileFromLocal(filename);
+                LanEditor.File.Refresh($("#_LEFilelist ul"));
+            }
         });
     },
     //延迟执行最后一次调用的函数
@@ -439,6 +473,7 @@ var LanEditor = {
                     LanEditor.SKLPara.SetCS(LanEditor.SKLPara.cs + 1);
                 }
             }
+            //重写enter键
         } else if (e.which == 13) {
             if (LanEditor.SKLPara.show == true) {
                 e.preventDefault();
@@ -448,19 +483,45 @@ var LanEditor = {
         }
         console.log("keyCode -> " + e.which);
     },
-    //文件对象
+    //------------------------------------------------------文件对象
     File: {
+        CurOpenFile: {
+            name: null,
+            time: null,
+            content: null
+        },
         // 保存为md文件
-        ExportMD: function() {
+        ExportMD: function(md) {
             var fileName = prompt("保存为Markdown文件，请输入文件名", "新建Markdown文件");
             if (fileName == null || fileName == "") {
                 return;
             }
-            this.ExportFile(fileName + ".md", LanEditor.TextElem.val());
+            this.ExportFile(fileName + ".md", md);
         },
         // 保存为HTML文件
-        ExportHTML: function() {
-
+        ExportHTML: function(md) {
+            var fileName = prompt("保存为HTML文件，请输入文件名", "新建HTML文件");
+            if (fileName == null || fileName == "") {
+                return;
+            }
+            var HTML_temp_content = '<!DOCTYPE html>' +
+                '<html lang="zh-CN">' +
+                '<head><meta charset="UTF-8">' +
+                '<style type="text/css">' +
+                'h1,h2,h3,h4,h5,h6,p,blockquote{margin:0;padding:0}' +
+                'body{font-family:"Helvetica Neue",Helvetica,"Hiragino Sans GB",Arial,sans-serif;font-size:13px;line-height:18px;color:#737373;margin:10px 13px 10px 13px}' +
+                'a{color:#0069d6}a:hover{color:#0050a3;text-decoration:none}' +
+                'a img{border:0}p{margin-bottom:9px}h1,h2,h3,h4,h5,h6{color:#404040;line-height:36px}h1{margin-bottom:18px;font-size:30px}h2{font-size:24px}h3{font-size:18px}' +
+                'h4{font-size:16px}h5{font-size:14px}h6{font-size:13px}hr{margin:0 0 19px;border:0;border-bottom:1px solid #ccc}' +
+                'blockquote{padding:13px 13px 21px 15px;margin-bottom:18px;font-family:georgia,serif;font-style:italic}' +
+                'blockquote:before{content:"C";font-size:40px;margin-left:-10px;font-family:georgia,serif;color:#eee}' +
+                'blockquote p{font-size:14px;font-weight:300;line-height:18px;margin-bottom:0;font-style:italic}code,pre{font-family:Monaco,Andale Mono,Courier New,monospace}' +
+                'code{background-color:#fee9cc;color:rgba(0,0,0,0.75);padding:1px 3px;font-size:12px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}' +
+                'pre{display:block;padding:14px;margin:0 0 18px;line-height:16px;font-size:11px;border:1px solid #d9d9d9;white-space:pre-wrap;word-wrap:break-word}' +
+                'pre code{background-color:#fff;color:#737373;font-size:11px;padding:0}@media screen and (min-width:768px){body{width:748px;margin:10px auto}}</style>';
+            HTML_temp_content += '<title>' + fileName + '</title>';
+            HTML_temp_content += '</head><body>' + LanEditor.converter.makeHtml(md) + '</body></html>';
+            this.ExportFile(fileName + ".html", HTML_temp_content);
         },
         //创建文件下载
         ExportFile: function(fileName, content) {
@@ -476,7 +537,7 @@ var LanEditor = {
         //存储文件到localstorage
         SaveFileToLocal: function(fileName, content) {
             if ("undefined" == localStorage) {
-                return "localStorage not support";
+                return "LocalStorage not support";
             }
             if (fileName == null || content == null) {
                 return "param wrong";
@@ -489,6 +550,16 @@ var LanEditor = {
             }
             localStorage.setItem(filename, content);
             return "OK";
+        },
+        // 从localstorage删除文件
+        DeleteFileFromLocal: function(fileName) {
+            for (varname in localStorage) {
+                if (varname.split("$")[0].length == 10 && varname.split("$")[1] == fileName) {
+                    localStorage.removeItem(varname);
+                    return true;
+                }
+            }
+            return false;
         },
         // 获取文件列表
         GetFileList: function() {
@@ -516,6 +587,63 @@ var LanEditor = {
                 }
             }
             return false;
+        },
+        // 创建新文件
+        NewFile: function(filename) {
+            if (filename == "" || filename == null) {
+                alert("无效的文件名");
+                return false;
+            }
+            var result = this.SaveFileToLocal(filename, "");
+            if (result == "OK") {
+                return true;
+            } else if (result == "LocalStorage not support") {
+                alert("您的浏览器不支持永久存储，请使用chrome以获得最佳体验");
+                return false;
+            } else if (result == "param wrong") {
+                alert("无效的文件名，请尝试更换文件名");
+                return false;
+            }
+        },
+        // 保存当前文件
+        SaveFile: function() {
+            var md = LanEditor.TextElem.val();
+            // 当前文件还没命名，提示输入文件名
+            if (LanEditor.File.CurOpenFile.name == null) {
+                var flag = confirm("当前文件未保存,是否保存?");
+                if (flag) {
+                    var filename = prompt("请输入文件名", "新建MD文件");
+                    if (filename == null || filename == "") {
+                        return;
+                    }
+                    LanEditor.File.CurOpenFile.name = filename;
+                    LanEditor.File.CurOpenFile.time = LanEditor.Time.GetTimestamp();
+                    LanEditor.File.CurOpenFile.content = md;
+                    LanEditor.File.SaveFileToLocal(filename, md);
+                }
+                return;
+            }
+            LanEditor.File.CurOpenFile.content = md;
+            LanEditor.File.SaveFileToLocal(LanEditor.File.CurOpenFile.name, md);
+        },
+        // 显示文件列表
+        ShowFileList: function(ShowObj) {
+            var filelist = this.GetFileList();
+            var html = "";
+            for (var i = 0; i < filelist.length; ++i) {
+                html += '<li>';
+                html += '<span class="_LEFName" title="' + filelist[i].name + '">' + filelist[i].name + '</span>';
+                html += '<span class="_LEFM" title="导出Markdown文件到本地">MD</span>';
+                html += '<span class="_LEFH" title="导出HTML文件到本地">HTML</span>';
+                html += '<span class="_LEFD" title="删除文件">删除</span>';
+                html += '<span class="_LEFT" title="创建日期: ' + LanEditor.Time.GetTimeString(filelist[i].time) + '">' + LanEditor.Time.GetTimeString(filelist[i].time).substr(5, 4) + '</span>';
+                html += '</li>';
+            }
+            ShowObj.html(html);
+        },
+        // 刷新文件列表
+        Refresh: function(ShowObj) {
+            this.ShowFileList(ShowObj);
         }
     },
     //菜单对象
@@ -528,55 +656,37 @@ var LanEditor = {
                 e.preventDefault();
                 if (this.IsShow) {
                     LanEditor.Background.Show(false);
-                    this.MenuObj.css({
-                        "height": "30px",
-                        "right": "100%"
-                    });
-                    setTimeout(function() {
-                        LanEditor.Menu.MenuObj.css({
-                            "display": "none"
-                        });
-                    }, 800);
-                    this.IsShow = false;
+                    this.Show(false);
                 } else {
                     LanEditor.Background.Show(true);
-                    this.MenuObj.css({
-                        "display": "block"
-                    });
-                    setTimeout(function() {
-                        LanEditor.Menu.MenuObj.css({
-                            "height": "320px",
-                            "right": "0%"
-                        });
-                    });
-                    this.IsShow = true;
+                    this.Show(true);
+                    LanEditor.File.ShowFileList($("#_LEFilelist ul"));
                 }
             }
-            console.log("IsShow -> " + this.IsShow);
         },
         //设置是否显示菜单，true显示，false不显示
         Show: function(IsShow) {
-            if(IsShow) {
+            if (IsShow) {
                 this.MenuObj.css({
                     "display": "block"
                 });
-                setTimeout(function(){
+                setTimeout(function() {
                     LanEditor.Menu.MenuObj.css({
                         "height": "320px",
                         "right": "0%"
                     });
-                }, 800);
+                });
                 this.IsShow = true;
             } else {
                 this.MenuObj.css({
                     "height": "30px",
                     "right": "100%"
                 });
-                setTimeout(function(){
+                setTimeout(function() {
                     LanEditor.Menu.MenuObj.css({
                         "display": "none"
                     });
-                }, 800);
+                }, 700);
                 this.IsShow = false;
             }
         }
@@ -611,9 +721,9 @@ var LanEditor = {
         },
         //是否显示背景遮罩层 false不显示，true显示
         Show: function(IsShow) {
-            if(IsShow) {
+            if (IsShow) {
                 this.IsShow = false;
-            }else {
+            } else {
                 this.IsShow = true;
             }
             this.Toggle();

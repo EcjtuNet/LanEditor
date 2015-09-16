@@ -4,6 +4,78 @@
 		"selected_items":
 		[
 			[
+				"save",
+				"SaveFile"
+			],
+			[
+				"delete",
+				"DeleteFileFromLocal"
+			],
+			[
+				"filename",
+				"fileName"
+			],
+			[
+				"export",
+				"ExportMD"
+			],
+			[
+				"filenaem",
+				"filename"
+			],
+			[
+				"Save",
+				"SaveFileToLocal"
+			],
+			[
+				"texl",
+				"TextElem"
+			],
+			[
+				"Getfile",
+				"GetFileContent"
+			],
+			[
+				"textl",
+				"TextElem"
+			],
+			[
+				"Get",
+				"GetTimestamp"
+			],
+			[
+				"file",
+				"File"
+			],
+			[
+				"New",
+				"NewFile"
+			],
+			[
+				"add",
+				"addEventListener"
+			],
+			[
+				"Show",
+				"ShowFileList"
+			],
+			[
+				"GetS",
+				"GetTimeString"
+			],
+			[
+				"gettime",
+				"GetTimeString"
+			],
+			[
+				"ti",
+				"Time"
+			],
+			[
+				"保存为",
+				"保存为HTML文件"
+			],
+			[
 				"data",
 				"datas"
 			],
@@ -38,10 +110,6 @@
 			[
 				"filen",
 				"filename"
-			],
-			[
-				"file",
-				"fileName"
 			],
 			[
 				"cont",
@@ -110,10 +178,6 @@
 			[
 				"eas",
 				"ease-out"
-			],
-			[
-				"texl",
-				"TextElemWidth"
 			],
 			[
 				"te",
@@ -450,70 +514,6 @@
 			[
 				"city",
 				"cityid"
-			],
-			[
-				"I",
-				"ImageUpload"
-			],
-			[
-				"pick",
-				"pickid"
-			],
-			[
-				"al",
-				"alert"
-			],
-			[
-				"ph",
-				"phone"
-			],
-			[
-				"pass",
-				"password"
-			],
-			[
-				"cl",
-				"closeBox"
-			],
-			[
-				"ta",
-				"target	Attr"
-			],
-			[
-				"wd",
-				"width"
-			],
-			[
-				"i",
-				"inline"
-			],
-			[
-				"bor",
-				"border-bottom"
-			],
-			[
-				"wid",
-				"width"
-			],
-			[
-				"s",
-				"src"
-			],
-			[
-				"dt",
-				"datas"
-			],
-			[
-				"inl",
-				"inline-block"
-			],
-			[
-				"fl",
-				"float"
-			],
-			[
-				"dta",
-				"databases"
 			]
 		]
 	},
@@ -523,7 +523,15 @@
 			"file": "LanEditor.css",
 			"settings":
 			{
-				"buffer_size": 6586,
+				"buffer_size": 6674,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "htmlcss.css",
+			"settings":
+			{
+				"buffer_size": 1844,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,7 +539,7 @@
 			"file": "LanEditor.js",
 			"settings":
 			{
-				"buffer_size": 30208,
+				"buffer_size": 39999,
 				"line_ending": "Windows"
 			}
 		},
@@ -544,18 +552,10 @@
 			}
 		},
 		{
-			"file": "highlight/README.md",
-			"settings":
-			{
-				"buffer_size": 3366,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "demo.html",
 			"settings":
 			{
-				"buffer_size": 1583,
+				"buffer_size": 1625,
 				"line_ending": "Windows"
 			}
 		}
@@ -567,13 +567,13 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 352.0,
+		"height": 392.0,
 		"last_filter": "Package Control: ",
 		"selected_items":
 		[
 			[
 				"Package Control: ",
-				"Package Control: List Packages"
+				"Package Control: Upgrade/Overwrite All Packages"
 			],
 			[
 				"Package Control: insta",
@@ -600,7 +600,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 416.0
+		"width": 400.0
 	},
 	"console":
 	{
@@ -625,6 +625,16 @@
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/LanEditor/README.md",
+		"/C/Users/LanPc/AppData/Roaming/Sublime Text 3/Packages/Emmet/Emmet.sublime-settings",
+		"/C/Users/LanPc/AppData/Roaming/Sublime Text 3/Packages/Emmet/Default (Windows).sublime-keymap",
+		"/C/Users/LanPc/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/LanPc/AppData/Roaming/Sublime Text 3/Packages/User/Emmet.sublime-settings",
+		"/C/xampp/htdocs/LanEditor/htmlcss.min.css",
+		"/C/Users/LanPc/Desktop/untitled.html",
+		"/C/Users/LanPc/AppData/Roaming/Sublime Text 3/Packages/HTML-CSS-JS Prettify/Default (Windows).sublime-keymap",
+		"/C/Users/LanPc/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/LanPc/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/C/Documents and Settings/Administrator/桌面/buy.php",
 		"/C/Documents and Settings/Administrator/桌面/route.php",
 		"/C/Documents and Settings/Administrator/桌面/新建Markdown文件.md",
@@ -742,17 +752,7 @@
 		"/Users/BluesDream/Sites/SunYuezhenGP/news.html",
 		"/Users/BluesDream/Desktop/传承网项目/网站页面/scripts/upload.js",
 		"/Users/BluesDream/Documents/sae/lansky/1/forum/index.html",
-		"/Users/BluesDream/Documents/sae/lansky/1/forum/css/index.css",
-		"/Users/BluesDream/Sites/CodingGame/6/index.js",
-		"/Users/BluesDream/Sites/CodingGame/6/index.css",
-		"/Users/BluesDream/Sites/CodingGame/6/index.html",
-		"/Users/BluesDream/Sites/zao/3/index.php",
-		"/Users/BluesDream/Sites/zao/3/page.php",
-		"/Users/BluesDream/Sites/CodingGame/1/nginx.conf",
-		"/Users/BluesDream/Documents/git/SunYuezhenGP/chat/js/index.js",
-		"/Users/BluesDream/Sites/SunYuezhenGP/manager/js/login.js",
-		"/Users/BluesDream/Sites/SunYuezhenGP/chat/ajax_chat.php",
-		"/Users/BluesDream/Sites/SunYuezhenGP/chat/service/login.js"
+		"/Users/BluesDream/Documents/sae/lansky/1/forum/css/index.css"
 	],
 	"find":
 	{
@@ -833,7 +833,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -842,62 +842,96 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6586,
+						"buffer_size": 6674,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6447,
-								6447
+								482,
+								482
 							]
 						],
 						"settings":
 						{
+							"origin_encoding": "UTF-8",
+							"side_bar_folders_auto_load_folder": 1,
 							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
+						"translation.x": -0.0,
+						"translation.y": 4608.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "htmlcss.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1844,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								409,
+								409
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
 						"translation.x": 0.0,
-						"translation.y": 7489.0,
+						"translation.y": 399.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
 					"file": "LanEditor.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 30208,
+						"buffer_size": 39999,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1361,
-								1361
+								5057,
+								5057
 							]
 						],
 						"settings":
 						{
+							"origin_encoding": "UTF-8",
+							"side_bar_folders_auto_load_folder": 1,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 14884.0,
+						"translation.y": 1683.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "boots.css",
 					"semi_transient": false,
 					"settings":
@@ -909,14 +943,16 @@
 						"selection":
 						[
 							[
-								132698,
-								132698
+								346,
+								346
 							]
 						],
 						"settings":
 						{
+							"origin_encoding": "ASCII",
+							"side_bar_folders_auto_load_folder": 1,
 							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -927,60 +963,34 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "highlight/README.md",
-					"semi_transient": true,
+					"buffer": 4,
+					"file": "demo.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3366,
+						"buffer_size": 1625,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								525,
+								525
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+							"origin_encoding": "ASCII",
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "demo.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1583,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1567,
-								1567
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1026.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1067,7 +1077,7 @@
 	"show_open_files": true,
 	"show_tabs": false,
 	"side_bar_visible": true,
-	"side_bar_width": 198.0,
+	"side_bar_width": 237.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
