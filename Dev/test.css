@@ -1,264 +1,17 @@
-* {
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
-html {
-    font-size: 10px;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    font-family: sans-serif;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
+body{
+    background-color: #bbb;
 }
-
-body {
-    margin: 0;
-    border: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    background-color: #fff;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-summary {
-    display: block;
-}
-
-strong {
-    font-weight: bold;
-}
-
-img {
-    border: 0;
-    vertical-align: middle;
-}
-
-hr {
-    height: 0;
-}
-
-pre {
-    overflow: auto;
-}
-
-code,
-kbd,
-pre,
-samp {
-    font-family: monospace, monospace;
-    font-size: 1em;
-}
-
-a {
-    background: transparent;
-    color: #428bca;
-    text-decoration: none;
-}
-
-a:hover,
-a:focus {
-    color: #2a6496;
-    text-decoration: underline;
-    outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: inherit;
-    font-weight: bold;
-    line-height: 1.1;
-    color: inherit;
-}
-
-h4,
-h5,
-h6 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-h1 {
-    margin: .67em 0;
-    font-size: 36px;
-}
-
-h2 {
-    font-size: 30px;
-}
-
-h3 {
-    font-size: 24px;
-}
-
-h4 {
-    font-size: 18px;
-}
-
-h5 {
-    font-size: 14px;
-}
-
-h6 {
-    font-size: 12px;
-}
-
 p {
     margin: 0 0 10px;
 }
-
-ul,
-ol {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-ul ul,
-ol ul,
-ul ol,
-ol ol {
-    margin-bottom: 0;
-}
-
-blockquote {
-    padding: 10px 20px;
-    margin: 0 0 20px;
-    font-size: 17.5px;
-    border-left: 5px solid #eee;
-}
-
-address {
-    margin-bottom: 20px;
-    font-style: normal;
-    line-height: 1.42857143;
-}
-
-code,
-kbd,
-pre,
-samp {
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-code {
-    padding: 2px 4px;
-    font-size: 90%;
-    color: #c7254e;
-    background-color: #f9f2f4;
-    border-radius: 4px;
-}
-
-pre {
-    display: block;
-    padding: 9.5px;
-    margin: 0 0 10px;
-    font-size: 13px;
-    line-height: 1.42857143;
-    color: #333;
-    word-break: break-all;
-    word-wrap: break-word;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-pre code {
-    padding: 0;
-    font-size: inherit;
-    color: inherit;
-    white-space: pre-wrap;
-    background-color: transparent;
-    border-radius: 0;
-}
-
-
-/* show keyword DIV */
-
-._Keyword {
-    box-sizing: content-box;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    width: 280px;
-    /*height: auto;*/
-    height: 4px;
-    max-height: 180px;
-    overflow: auto;
-    left: 0px;
-    top: 0px;
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: 3px;
-    border: 2px solid #999;
-    box-shadow: 0px 0px 9px #fff;
-    transition: 0.3s;
-    opacity: 0;
-    z-index: -20;
-}
-
-._Keyword ul {
-    border: 0;
-    padding: 0;
-    list-style: none;
-    height: auto;
-    font-size: 13px;
-    margin: 0;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-._Keyword ul li {
-    margin: 0;
-    border: 0;
-    padding: 2px;
-    height: 18px;
-    line-height: 14px;
-    transition: 0.3s;
-}
-
-._limatch {
-    background-color: rgba(135, 195, 250, 0.9);
-}
-
-._KeyHL {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    color: red;
-}
-
-._LanEditorBg {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    margin: auto auto;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    background-color: #333;
-    opacity: 0;
-    z-index: 998;
-    transition: 0.8s;
-}
-
 ._LEBorder {
     display: none;
     overflow: hidden;
@@ -325,6 +78,7 @@ pre code {
 }
 
 #_LEFilelist {
+    display: none;
     overflow: hidden;
 }
 
@@ -445,12 +199,10 @@ pre code {
 
 #_LESetting {
     overflow: auto;
-    display: none;
 }
 #_LESetting ul{
     width: 100%;
     height: auto;
-    padding: 0px;
     list-style: none;
 }
 #_LESetting ul li{
@@ -489,6 +241,7 @@ pre code {
     border: 1px solid #999;
     box-shadow: inset 0px 0px 5px #999;
     background-color: #dcdada;
+    background-color: #4dc4f5;
     margin-top: 2px;
     transition: 0.5s;
     -webkit-transition: 0.5s;

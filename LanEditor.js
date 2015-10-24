@@ -54,7 +54,7 @@ var LanEditor = {
             '<div class="_LEBorder" id="_LEBorder">' +
             '<ul class="_LEMenuList">' +
             '<li class="_MenuListSe">文件列表</li>' +
-            '<li>选项设置</li>' +
+            '<li class="_MenuListSet">选项设置</li>' +
             '</ul>' +
             '<div class="_LEContent">' +
             '<div id="_LEFilelist">' +
@@ -63,6 +63,22 @@ var LanEditor = {
             '<span id="_LEFNB">新建</span>' +
             '</p>' +
             '<ul>' +
+            '</ul>' +
+            '</div>' +
+            '<div id="_LESetting">' +
+            '<ul>' +
+            '<li id="OpenSKL">' +
+                '<span class="_LESName">开启关键字提示</span>' +
+                '<span class="_LESCon"><span></span></span>' +
+            '</li>' +
+            '<li id="OpenSKLAni">' +
+                '<span class="_LESName">开启提示框动画</span>' +
+                '<span class="_LESCon"><span></span></span>' +
+            '</li>' +
+            '<li id="OpenMenuAni">' +
+                '<span class="_LESName">开启菜单动画</span>' +
+                '<span class="_LESCon"><span></span></span>' +
+            '</li>' +
             '</ul>' +
             '</div>' +
             '</div>' +
@@ -160,6 +176,57 @@ var LanEditor = {
                 LanEditor.File.Refresh($("#_LEFilelist ul"));
             }
         });
+        //----------------------------菜单选项卡事件
+        $("._MenuListSe").click(function(e) {
+            $(this).css("background-color", "#948266");
+            $("._MenuListSet").css("background-color", "#aa9b83");
+            $("#_LEFilelist").css("display", "block");
+            $("#_LESetting").css("display", "none");
+        });
+        $("._MenuListSet").click(function(e) {
+            $(this).css("background-color", "#948266");
+            $("._MenuListSe").css("background-color", "#aa9b83");
+            $("#_LEFilelist").css("display", "none");
+            $("#_LESetting").css("display", "block");
+        });
+        //-----------------------------选项设置事件代理
+        $("#_LESetting ul").delegate("li", "click", function(e) {
+            var ClassName = $(e.target).attr("id");
+            console.log(ClassName);
+            switch (ClassName) {
+                case "OpenSKL":
+                    if(LanEditor.SetPara.OpenSKL == 1) {
+                        LanEditor.SetPara.OpenSKL = 0;
+                        $("._LESCon", e.target).css("background-color", "#dcdada").children().css("left", "1px");
+                    } else {
+                        LanEditor.SetPara.OpenSKL = 1;
+                        $("._LESCon", e.target).css("background-color", "#4dc4f5").children().css("left", "21px");
+                    }
+                    break;
+                case "OpenSKLAni":
+                    if(LanEditor.SetPara.OpenSKLAni == 1) {
+                        LanEditor.SetPara.OpenSKLAni = 0;
+                        $("._LESCon", e.target).css("background-color", "#dcdada").children().css("left", "1px");
+                    } else {
+                        LanEditor.SetPara.OpenSKLAni = 1;
+                        $("._LESCon", e.target).css("background-color", "#4dc4f5").children().css("left", "21px");
+                    }
+                    break;
+                case "OpenMenuAni":
+                    if(LanEditor.SetPara.OpenMenuAni == 1) {
+                        LanEditor.SetPara.OpenMenuAni = 0;
+                        $("._LESCon", e.target).css("background-color", "#dcdada").children().css("left", "1px");
+                    } else {
+                        LanEditor.SetPara.OpenMenuAni = 1;
+                        $("._LESCon", e.target).css("background-color", "#4dc4f5").children().css("left", "21px");
+                    }
+                    break;
+            }
+            LanEditor.SetPara.Save();
+        });
+        //加载设置并且立马应用
+        this.SetPara.Load();
+        this.SetPara.Apply();
     },
     //延迟执行最后一次调用的函数
     DelayTillLast: function(id, fn, wait) {
@@ -737,6 +804,52 @@ var LanEditor = {
         GetTimeString: function(timestamp) {
             var timestamp = new Date(timestamp * 1000);
             return timestamp.toLocaleString();
+        }
+    },
+    //设置参数
+    SetPara: {
+        //提示框
+        OpenSKL: null,
+        //提示框动画
+        OpenSKLAni: null,
+        //菜单动画
+        OpenMenuAni: null,
+        //加载设置
+        Load: function() {
+            this.OpenSKL = parseInt(localStorage.OpenSKL || 0);
+            this.OpenSKLAni = parseInt(localStorage.OpenSKLAni || 0);
+            this.OpenMenuAni = parseInt(localStorage.OpenMenuAni || 0);
+        },
+        //保存设置
+        Save: function() {
+            localStorage.OpenSKL = this.OpenSKL;
+            localStorage.OpenSKLAni = this.OpenSKLAni;
+            localStorage.OpenMenuAni = this.OpenMenuAni;
+        },
+        //立马应用设置
+        Apply: function() {
+            $("#OpenSKL ._LESCon", $("#_LESetting")).css(function(para) {
+                console.log($(this));
+                if(para == 1) {
+                    $("#OpenSKL ._LESCon", $("#_LESetting")).children().css("left", "21px");
+                    return {"background-color": "#4dc4f5"};
+                }
+                return {"background-color": "#dcdada"};
+            }(this.OpenSKL));
+            $("#OpenSKLAni ._LESCon", $("#_LESetting")).css(function(para) {
+                if(para == 1) {
+                    $("#OpenSKLAni ._LESCon", $("#_LESetting")).children().css("left", "21px");
+                    return {"background-color": "#4dc4f5"};
+                }
+                return {"background-color": "#dcdada"};
+            }(this.OpenSKLAni));
+            $("#OpenMenuAni ._LESCon", $("#_LESetting")).css(function(para) {
+                if(para == 1) {
+                    $("#OpenMenuAni ._LESCon", $("#_LESetting")).children().css("left", "21px");
+                    return {"background-color": "#4dc4f5"};
+                }
+                return {"background-color": "#dcdada"};
+            }(this.OpenMenuAni));
         }
     }
 };

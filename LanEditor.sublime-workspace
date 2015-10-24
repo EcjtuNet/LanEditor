@@ -4,6 +4,54 @@
 		"selected_items":
 		[
 			[
+				"classnae",
+				"ClassName"
+			],
+			[
+				"openskl",
+				"OpenSKLAni"
+			],
+			[
+				"sav",
+				"Save"
+			],
+			[
+				"open",
+				"OpenSKL"
+			],
+			[
+				"opena",
+				"OpenSKLAni"
+			],
+			[
+				"OpenAni",
+				"OpenSKLAni"
+			],
+			[
+				"Opensk",
+				"OpenSKL"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"border",
+				"border"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"bord",
+				"border-left"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
 				"save",
 				"SaveFile"
 			],
@@ -84,14 +132,6 @@
 				"min-width"
 			],
 			[
-				"pad",
-				"padding-right"
-			],
-			[
-				"margin",
-				"margin-bottom"
-			],
-			[
 				"font",
 				"font-size"
 			],
@@ -102,10 +142,6 @@
 			[
 				"li",
 				"line-height"
-			],
-			[
-				"border",
-				"border-box"
 			],
 			[
 				"filen",
@@ -478,42 +514,6 @@
 			[
 				"photo",
 				"photofile"
-			],
-			[
-				"work",
-				"workid"
-			],
-			[
-				"padd",
-				"padding"
-			],
-			[
-				"area",
-				"areaname"
-			],
-			[
-				"areaname",
-				"areaname"
-			],
-			[
-				"seel",
-				"settlementname"
-			],
-			[
-				"d",
-				"databases"
-			],
-			[
-				"en",
-				"enterid"
-			],
-			[
-				"aea",
-				"areaid"
-			],
-			[
-				"city",
-				"cityid"
 			]
 		]
 	},
@@ -523,7 +523,15 @@
 			"file": "LanEditor.css",
 			"settings":
 			{
-				"buffer_size": 6674,
+				"buffer_size": 8091,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "LanEditor.js",
+			"settings":
+			{
+				"buffer_size": 45040,
 				"line_ending": "Windows"
 			}
 		},
@@ -536,11 +544,15 @@
 			}
 		},
 		{
-			"file": "LanEditor.js",
+			"contents": "h1,h2,h3,h4,h5,h6,p,blockquote{margin:0;padding:0}body{font-family:\"Helvetica Neue\",Helvetica,\"Hiragino Sans GB\",Arial,sans-serif;font-size:13px;line-height:18px;color:#737373;margin:10px 13px 10px 13px}\na{color:#0069d6}a:hover{color:#0050a3;text-decoration:none}a img{border:0}p{margin-bottom:9px}h1,h2,h3,h4,h5,h6{color:#404040;line-height:36px}h1{margin-bottom:18px;font-size:30px}\nh2{font-size:24px}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{font-size:13px}hr{margin:0 0 19px;border:0;border-bottom:1px solid #ccc}blockquote{padding:13px 13px 21px 15px;margin-bottom:18px;font-family:georgia,serif;font-style:italic}\nblockquote:before{content:\"ﾂ，\";font-size:40px;margin-left:-10px;font-family:georgia,serif;color:#eee}blockquote p{font-size:14px;font-weight:300;line-height:18px;margin-bottom:0;font-style:italic}\ncode,pre{font-family:Monaco,Andale Mono,Courier New,monospace}code{background-color:#fee9cc;color:rgba(0,0,0,0.75);padding:1px 3px;font-size:12px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}\npre{display:block;padding:14px;margin:0 0 18px;line-height:16px;font-size:11px;border:1px solid #d9d9d9;white-space:pre-wrap;word-wrap:break-word}pre code{background-color:#fff;color:#737373;font-size:11px;padding:0}\n@media screen and (min-width:768px){body{width:748px;margin:10px auto}}",
+			"file": "htmlcss.min.css",
+			"file_size": 1335,
+			"file_write_time": 130892100685928310,
 			"settings":
 			{
-				"buffer_size": 39999,
-				"line_ending": "Windows"
+				"buffer_size": 1334,
+				"line_ending": "Unix",
+				"scratch": true
 			}
 		},
 		{
@@ -555,25 +567,44 @@
 			"file": "demo.html",
 			"settings":
 			{
-				"buffer_size": 1625,
+				"buffer_size": 1599,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Dev/test.html",
+			"settings":
+			{
+				"buffer_size": 2052,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Dev/test.js",
+			"settings":
+			{
+				"buffer_size": 35,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Dev/test.css",
+			"settings":
+			{
+				"buffer_size": 4685,
 				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
-	"build_system_choices":
-	[
-	],
-	"build_varint": "",
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "Package Control: ",
 		"selected_items":
 		[
 			[
 				"Package Control: ",
-				"Package Control: Upgrade/Overwrite All Packages"
+				"Package Control: Install Package"
 			],
 			[
 				"Package Control: insta",
@@ -600,7 +631,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 400.0
+		"width": 504.0
 	},
 	"console":
 	{
@@ -619,12 +650,11 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/xampp/htdocs/LanEditor"
-	],
 	"file_history":
 	[
+		"/D/program file/Sublime Text 3/Data/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/D/program file/Sublime Text 3/Data/Packages/User/Preferences.sublime-settings",
+		"/D/program file/Sublime Text 3/Data/Packages/Default/Preferences.sublime-settings",
 		"/C/xampp/htdocs/LanEditor/README.md",
 		"/C/Users/LanPc/AppData/Roaming/Sublime Text 3/Packages/Emmet/Emmet.sublime-settings",
 		"/C/Users/LanPc/AppData/Roaming/Sublime Text 3/Packages/Emmet/Default (Windows).sublime-keymap",
@@ -749,10 +779,7 @@
 		"/Users/BluesDream/Sites/PowerManagerSystem/func/date.php",
 		"/Users/BluesDream/Sites/SunYuezhenGP/about.html",
 		"/Users/BluesDream/Sites/SunYuezhenGP/css/style.css",
-		"/Users/BluesDream/Sites/SunYuezhenGP/news.html",
-		"/Users/BluesDream/Desktop/传承网项目/网站页面/scripts/upload.js",
-		"/Users/BluesDream/Documents/sae/lansky/1/forum/index.html",
-		"/Users/BluesDream/Documents/sae/lansky/1/forum/css/index.css"
+		"/Users/BluesDream/Sites/SunYuezhenGP/news.html"
 	],
 	"find":
 	{
@@ -770,6 +797,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"span",
+			"p",
+			"css",
+			">\n",
+			"js",
 			"LanEditor文档说明LanEditor文档说明LanEditor文档说明",
 			"Keyword",
 			"console",
@@ -833,7 +865,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -842,34 +874,68 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6674,
+						"buffer_size": 8091,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								482,
-								482
+								7619,
+								7625
 							]
 						],
 						"settings":
 						{
+							"encoding_helper_encoding": "UTF-8",
 							"origin_encoding": "UTF-8",
 							"side_bar_folders_auto_load_folder": 1,
 							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 4608.0,
+						"translation.x": 0.0,
+						"translation.y": 8877.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "LanEditor.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 45040,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7464,
+								7464
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_encoding": "UTF-8",
+							"origin_encoding": "UTF-8",
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3379.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "htmlcss.css",
 					"semi_transient": false,
 					"settings":
@@ -881,57 +947,60 @@
 						"selection":
 						[
 							[
-								409,
-								409
+								428,
+								428
 							]
 						],
 						"settings":
 						{
+							"encoding_helper_encoding": "cp936",
 							"origin_encoding": "UTF-8",
 							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/CSS/CSS.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 399.0,
+						"translation.y": 421.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "LanEditor.js",
+					"buffer": 3,
+					"file": "htmlcss.min.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 39999,
+						"buffer_size": 1334,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5057,
-								5057
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"origin_encoding": "UTF-8",
-							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"encoding_helper_encoding": "cp936",
+							"in_converting": true,
+							"origin_encoding": "SHIFT_JIS",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1683.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "boots.css",
 					"semi_transient": false,
 					"settings":
@@ -949,6 +1018,7 @@
 						],
 						"settings":
 						{
+							"encoding_helper_encoding": "UTF-8",
 							"origin_encoding": "ASCII",
 							"side_bar_folders_auto_load_folder": 1,
 							"syntax": "Packages/CSS/CSS.tmLanguage",
@@ -959,28 +1029,29 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "demo.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1625,
+						"buffer_size": 1599,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								525,
-								525
+								590,
+								590
 							]
 						],
 						"settings":
 						{
+							"encoding_helper_encoding": "cp936",
 							"origin_encoding": "ASCII",
 							"side_bar_folders_auto_load_folder": 1,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
@@ -988,6 +1059,95 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Dev/test.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2052,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1453,
+								1453
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 153.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Dev/test.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 35,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								31,
+								31
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_encoding": "UTF-8",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Dev/test.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4685,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4181,
+								4187
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_encoding": "UTF-8",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4105.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -1035,7 +1195,6 @@
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "",
 	"project": "LanEditor.sublime-project",
 	"replace":
 	{
@@ -1045,7 +1204,6 @@
 	"select_file":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1054,7 +1212,6 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1063,13 +1220,11 @@
 	"select_symbol":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
 	"settings":
 	{
 	},
