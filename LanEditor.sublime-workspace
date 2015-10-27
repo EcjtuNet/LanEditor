@@ -531,7 +531,15 @@
 			"file": "LanEditor.js",
 			"settings":
 			{
-				"buffer_size": 45040,
+				"buffer_size": 47206,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 450,
 				"line_ending": "Windows"
 			}
 		},
@@ -881,8 +889,8 @@
 						"selection":
 						[
 							[
-								7619,
-								7625
+								2868,
+								2868
 							]
 						],
 						"settings":
@@ -895,10 +903,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8877.0,
+						"translation.y": 4447.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -907,15 +915,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 45040,
+						"buffer_size": 47206,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7464,
-								7464
+								31022,
+								31022
 							]
 						],
 						"settings":
@@ -928,7 +936,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3379.0,
+						"translation.y": 14058.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -936,6 +944,37 @@
 				},
 				{
 					"buffer": 2,
+					"file": "README.md",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 450,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								450,
+								450
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_encoding": "UTF-8",
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "htmlcss.css",
 					"semi_transient": false,
 					"settings":
@@ -964,11 +1003,11 @@
 						"translation.y": 421.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "htmlcss.min.css",
 					"semi_transient": false,
 					"settings":
@@ -996,11 +1035,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "boots.css",
 					"semi_transient": false,
 					"settings":
@@ -1029,11 +1068,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "demo.html",
 					"semi_transient": false,
 					"settings":
@@ -1061,11 +1100,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "Dev/test.html",
 					"semi_transient": false,
 					"settings":
@@ -1090,11 +1129,11 @@
 						"translation.y": 153.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "Dev/test.js",
 					"semi_transient": false,
 					"settings":
@@ -1119,11 +1158,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "Dev/test.css",
 					"semi_transient": false,
 					"settings":
@@ -1150,7 +1189,7 @@
 						"translation.y": 4105.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]

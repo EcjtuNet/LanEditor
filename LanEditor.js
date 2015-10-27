@@ -68,16 +68,20 @@ var LanEditor = {
             '<div id="_LESetting">' +
             '<ul>' +
             '<li id="OpenSKL">' +
-                '<span class="_LESName">开启关键字提示</span>' +
-                '<span class="_LESCon"><span></span></span>' +
+            '<span class="_LESName">开启关键字提示</span>' +
+            '<span class="_LESCon"><span></span></span>' +
             '</li>' +
             '<li id="OpenSKLAni">' +
-                '<span class="_LESName">开启提示框动画</span>' +
-                '<span class="_LESCon"><span></span></span>' +
+            '<span class="_LESName">开启提示框动画</span>' +
+            '<span class="_LESCon"><span></span></span>' +
             '</li>' +
             '<li id="OpenMenuAni">' +
-                '<span class="_LESName">开启菜单动画</span>' +
-                '<span class="_LESCon"><span></span></span>' +
+            '<span class="_LESName">开启菜单动画</span>' +
+            '<span class="_LESCon"><span></span></span>' +
+            '</li>' +
+            '<li id="OpenAutoSymbol">' +
+            '<span class="_LESName">开启符号补全</span>' +
+            '<span class="_LESCon"><span></span></span>' +
             '</li>' +
             '</ul>' +
             '</div>' +
@@ -149,25 +153,25 @@ var LanEditor = {
             if ($(e.target).hasClass("_LEFName")) {
                 var filename = $(e.target).text();
                 var content = LanEditor.File.GetFileContent(filename);
-                LanEditor.TextElem.val( content );
+                LanEditor.TextElem.val(content);
                 LanEditor.File.CurOpenFile.name = filename;
                 LanEditor.File.CurOpenFile.content = content;
                 LanEditor.RenderHTML();
-            // 导出markdown文件
+                // 导出markdown文件
             } else if ($(e.target).hasClass("_LEFM")) {
                 var filename = $(e.target).prev().text();
                 var content = LanEditor.File.GetFileContent(filename);
                 LanEditor.File.ExportMD(content);
-            // 导出HTML文件
+                // 导出HTML文件
             } else if ($(e.target).hasClass("_LEFH")) {
                 var filename = $(e.target).prev().prev().text();
                 var content = LanEditor.File.GetFileContent(filename);
                 LanEditor.File.ExportHTML(content);
-            // 删除文件
+                // 删除文件
             } else if ($(e.target).hasClass("_LEFD")) {
                 var filename = $(e.target).prev().prev().prev().text();
                 // 删除的是否是当前正在编辑的文件
-                if( filename == LanEditor.File.CurOpenFile.name ) {
+                if (filename == LanEditor.File.CurOpenFile.name) {
                     LanEditor.File.CurOpenFile.name = null;
                     LanEditor.File.CurOpenFile.content = null;
                     LanEditor.File.CurOpenFile.time = null;
@@ -195,7 +199,7 @@ var LanEditor = {
             console.log(ClassName);
             switch (ClassName) {
                 case "OpenSKL":
-                    if(LanEditor.SetPara.OpenSKL == 1) {
+                    if (LanEditor.SetPara.OpenSKL == 1) {
                         LanEditor.SetPara.OpenSKL = 0;
                         $("._LESCon", e.target).css("background-color", "#dcdada").children().css("left", "1px");
                     } else {
@@ -204,20 +208,35 @@ var LanEditor = {
                     }
                     break;
                 case "OpenSKLAni":
-                    if(LanEditor.SetPara.OpenSKLAni == 1) {
+                    if (LanEditor.SetPara.OpenSKLAni == 1) {
                         LanEditor.SetPara.OpenSKLAni = 0;
                         $("._LESCon", e.target).css("background-color", "#dcdada").children().css("left", "1px");
+                        $("#_Keyword").css("transition", "0s");
                     } else {
                         LanEditor.SetPara.OpenSKLAni = 1;
                         $("._LESCon", e.target).css("background-color", "#4dc4f5").children().css("left", "21px");
+                        $("#_Keyword").css("transition", "0.3s");
                     }
                     break;
                 case "OpenMenuAni":
-                    if(LanEditor.SetPara.OpenMenuAni == 1) {
+                    if (LanEditor.SetPara.OpenMenuAni == 1) {
                         LanEditor.SetPara.OpenMenuAni = 0;
                         $("._LESCon", e.target).css("background-color", "#dcdada").children().css("left", "1px");
+                        $("#_LEBorder").css("transition", "0s");
+                        $("#_LanEditorBg").css("transition", "0s");
                     } else {
                         LanEditor.SetPara.OpenMenuAni = 1;
+                        $("._LESCon", e.target).css("background-color", "#4dc4f5").children().css("left", "21px");
+                        $("#_LEBorder").css("transition", "1s");
+                        $("#_LanEditorBg").css("transition", "0.8s");
+                    }
+                    break;
+                case "OpenAutoSymbol":
+                    if (LanEditor.SetPara.OpenAutoSymbol == 1) {
+                        LanEditor.SetPara.OpenAutoSymbol = 0;
+                        $("._LESCon", e.target).css("background-color", "#dcdada").children().css("left", "1px");
+                    } else {
+                        LanEditor.SetPara.OpenAutoSymbol = 1;
                         $("._LESCon", e.target).css("background-color", "#4dc4f5").children().css("left", "21px");
                     }
                     break;
@@ -297,6 +316,9 @@ var LanEditor = {
     },
     //关键字自动补全，keyup阶段执行
     AutoCompleteKeyword: function(event) {
+        if (LanEditor.SetPara.OpenSKL == 0) {
+            return;
+        }
         var TextElem = $(this);
         var e = event;
         var SKLelem = $("#_Keyword");
@@ -423,6 +445,9 @@ var LanEditor = {
     },
     //符号自动补全，keyup阶段执行
     AutoCompleteSymbol: function(event) {
+        if(LanEditor.SetPara.OpenAutoSymbol == 0) {
+            return;
+        }
         var e = event;
         var TextElem = $(this);
         //按回车缩进和上一行相同的间距
@@ -722,9 +747,11 @@ var LanEditor = {
             if (e.which == 27) {
                 e.preventDefault();
                 if (this.IsShow) {
+                    console.log("menu -> hide");
                     LanEditor.Background.Show(false);
                     this.Show(false);
                 } else {
+                    console.log("menu -> show");
                     LanEditor.Background.Show(true);
                     this.Show(true);
                     LanEditor.File.ShowFileList($("#_LEFilelist ul"));
@@ -733,28 +760,27 @@ var LanEditor = {
         },
         //设置是否显示菜单，true显示，false不显示
         Show: function(IsShow) {
-            if (IsShow) {
-                this.MenuObj.css({
-                    "display": "block"
+            this.MenuObj.queue([]);
+            if(IsShow){
+                this.MenuObj.queue(function(){
+                    LanEditor.Menu.IsShow = true;
+                    $(this).css("display", "block");
+                    $(this).delay(10).dequeue();
                 });
-                setTimeout(function() {
-                    LanEditor.Menu.MenuObj.css({
-                        "height": "320px",
-                        "right": "0%"
-                    });
+                this.MenuObj.queue(function(){
+                    $(this).css("height", "320px");
+                    $(this).dequeue();
                 });
-                this.IsShow = true;
-            } else {
-                this.MenuObj.css({
-                    "height": "30px",
-                    "right": "100%"
+            }else{
+                this.MenuObj.queue(function(){
+                    LanEditor.Menu.IsShow = false;
+                    $(this).css("height", "30px");
+                    $(this).delay(900).dequeue();
                 });
-                setTimeout(function() {
-                    LanEditor.Menu.MenuObj.css({
-                        "display": "none"
-                    });
-                }, 700);
-                this.IsShow = false;
+                this.MenuObj.queue(function(){
+                    $(this).css("display", "none");
+                    $(this).dequeue();
+                });
             }
         }
     },
@@ -764,26 +790,27 @@ var LanEditor = {
         BackObj: null,
         //切换显示状态
         Toggle: function() {
-            if (this.IsShow) {
-                this.BackObj.css({
-                    "opacity": 0
+            this.BackObj.queue([]);
+            if(this.IsShow) {
+                this.BackObj.queue(function(){
+                    LanEditor.Background.IsShow = false;
+                    $(this).css("opacity", 0);
+                    $(this).delay(800).dequeue();
                 });
-                setTimeout(function() {
-                    LanEditor.Background.BackObj.css({
-                        "display": "none"
-                    });
-                }, 800);
-                this.IsShow = false;
-            } else {
-                this.BackObj.css({
-                    "display": "block"
+                this.BackObj.queue(function(){
+                    $(this).css("display", "none");
+                    $(this).dequeue();
                 });
-                setTimeout(function() {
-                    LanEditor.Background.BackObj.css({
-                        "opacity": 0.8
-                    });
-                }, 10);
-                this.IsShow = true;
+            }else{
+                this.BackObj.queue(function(){
+                    LanEditor.Background.IsShow = true;
+                    $(this).css("display", "block");
+                    $(this).delay(10).dequeue();
+                });
+                this.BackObj.queue(function(){
+                    $(this).css("opacity", 0.8);
+                    $(this).dequeue();
+                });
             }
         },
         //是否显示背景遮罩层 false不显示，true显示
@@ -814,42 +841,69 @@ var LanEditor = {
         OpenSKLAni: null,
         //菜单动画
         OpenMenuAni: null,
+        //符号自动匹配
+        OpenAutoSymbol: null,
         //加载设置
         Load: function() {
             this.OpenSKL = parseInt(localStorage.OpenSKL || 0);
             this.OpenSKLAni = parseInt(localStorage.OpenSKLAni || 0);
             this.OpenMenuAni = parseInt(localStorage.OpenMenuAni || 0);
+            this.OpenAutoSymbol = parseInt(localStorage.OpenAutoSymbol || 0);
         },
         //保存设置
         Save: function() {
             localStorage.OpenSKL = this.OpenSKL;
             localStorage.OpenSKLAni = this.OpenSKLAni;
             localStorage.OpenMenuAni = this.OpenMenuAni;
+            localStorage.OpenAutoSymbol = this.OpenAutoSymbol;
         },
         //立马应用设置
         Apply: function() {
             $("#OpenSKL ._LESCon", $("#_LESetting")).css(function(para) {
                 console.log($(this));
-                if(para == 1) {
+                if (para == 1) {
                     $("#OpenSKL ._LESCon", $("#_LESetting")).children().css("left", "21px");
-                    return {"background-color": "#4dc4f5"};
+                    return {
+                        "background-color": "#4dc4f5"
+                    };
                 }
-                return {"background-color": "#dcdada"};
+                return {
+                    "background-color": "#dcdada"
+                };
             }(this.OpenSKL));
             $("#OpenSKLAni ._LESCon", $("#_LESetting")).css(function(para) {
-                if(para == 1) {
+                if (para == 1) {
                     $("#OpenSKLAni ._LESCon", $("#_LESetting")).children().css("left", "21px");
-                    return {"background-color": "#4dc4f5"};
+                    return {
+                        "background-color": "#4dc4f5"
+                    };
                 }
-                return {"background-color": "#dcdada"};
+                return {
+                    "background-color": "#dcdada"
+                };
             }(this.OpenSKLAni));
             $("#OpenMenuAni ._LESCon", $("#_LESetting")).css(function(para) {
-                if(para == 1) {
+                if (para == 1) {
                     $("#OpenMenuAni ._LESCon", $("#_LESetting")).children().css("left", "21px");
-                    return {"background-color": "#4dc4f5"};
+                    return {
+                        "background-color": "#4dc4f5"
+                    };
                 }
-                return {"background-color": "#dcdada"};
+                return {
+                    "background-color": "#dcdada"
+                };
             }(this.OpenMenuAni));
+            $("#OpenAutoSymbol ._LESCon", $("#_LESetting")).css(function(para) {
+                if (para == 1) {
+                    $("#OpenAutoSymbol ._LESCon", $("#_LESetting")).children().css("left", "21px");
+                    return {
+                        "background-color": "#4dc4f5"
+                    };
+                }
+                return {
+                    "background-color": "#dcdada"
+                };
+            }(this.OpenAutoSymbol));
         }
     }
 };
