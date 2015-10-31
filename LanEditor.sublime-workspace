@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"background",
+				"Background"
+			],
+			[
+				"back",
+				"Background"
+			],
+			[
 				"classnae",
 				"ClassName"
 			],
@@ -504,16 +512,8 @@
 				"blindID"
 			],
 			[
-				"back",
-				"background-color"
-			],
-			[
 				"list",
 				"list-style"
-			],
-			[
-				"photo",
-				"photofile"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "LanEditor.css",
 			"settings":
 			{
-				"buffer_size": 8091,
+				"buffer_size": 8089,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "LanEditor.js",
 			"settings":
 			{
-				"buffer_size": 47206,
+				"buffer_size": 47593,
 				"line_ending": "Windows"
 			}
 		},
@@ -882,15 +882,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8091,
+						"buffer_size": 8089,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2868,
-								2868
+								3662,
+								3662
 							]
 						],
 						"settings":
@@ -903,7 +903,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4447.0,
+						"translation.y": 4705.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -915,15 +915,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 47206,
+						"buffer_size": 47593,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								31022,
-								31022
+								10467,
+								10467
 							]
 						],
 						"settings":
@@ -936,7 +936,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 14058.0,
+						"translation.y": 4464.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1123,7 +1123,10 @@
 						"settings":
 						{
 							"encoding_helper_encoding": "UTF-8",
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 153.0,
@@ -1152,6 +1155,7 @@
 						"settings":
 						{
 							"encoding_helper_encoding": "UTF-8",
+							"origin_encoding": "ASCII",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -1181,6 +1185,7 @@
 						"settings":
 						{
 							"encoding_helper_encoding": "UTF-8",
+							"origin_encoding": "UTF-8",
 							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true

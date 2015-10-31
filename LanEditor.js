@@ -195,38 +195,37 @@ var LanEditor = {
         });
         //-----------------------------选项设置事件代理
         $("#_LESetting ul").delegate("li", "click", function(e) {
-            var ClassName = $(e.target).attr("id");
-            console.log(ClassName);
-            switch (ClassName) {
+            var IdName = $(this).attr("id");
+            switch (IdName) {
                 case "OpenSKL":
                     if (LanEditor.SetPara.OpenSKL == 1) {
                         LanEditor.SetPara.OpenSKL = 0;
-                        $("._LESCon", e.target).css("background-color", "#dcdada").children().css("left", "1px");
+                        $("._LESCon", $(this)).css("background-color", "#dcdada").children().css("left", "1px");
                     } else {
                         LanEditor.SetPara.OpenSKL = 1;
-                        $("._LESCon", e.target).css("background-color", "#4dc4f5").children().css("left", "21px");
+                        $("._LESCon", $(this)).css("background-color", "#4dc4f5").children().css("left", "21px");
                     }
                     break;
                 case "OpenSKLAni":
                     if (LanEditor.SetPara.OpenSKLAni == 1) {
                         LanEditor.SetPara.OpenSKLAni = 0;
-                        $("._LESCon", e.target).css("background-color", "#dcdada").children().css("left", "1px");
+                        $("._LESCon", $(this)).css("background-color", "#dcdada").children().css("left", "1px");
                         $("#_Keyword").css("transition", "0s");
                     } else {
                         LanEditor.SetPara.OpenSKLAni = 1;
-                        $("._LESCon", e.target).css("background-color", "#4dc4f5").children().css("left", "21px");
+                        $("._LESCon", $(this)).css("background-color", "#4dc4f5").children().css("left", "21px");
                         $("#_Keyword").css("transition", "0.3s");
                     }
                     break;
                 case "OpenMenuAni":
                     if (LanEditor.SetPara.OpenMenuAni == 1) {
                         LanEditor.SetPara.OpenMenuAni = 0;
-                        $("._LESCon", e.target).css("background-color", "#dcdada").children().css("left", "1px");
+                        $("._LESCon", $(this)).css("background-color", "#dcdada").children().css("left", "1px");
                         $("#_LEBorder").css("transition", "0s");
                         $("#_LanEditorBg").css("transition", "0s");
                     } else {
                         LanEditor.SetPara.OpenMenuAni = 1;
-                        $("._LESCon", e.target).css("background-color", "#4dc4f5").children().css("left", "21px");
+                        $("._LESCon", $(this)).css("background-color", "#4dc4f5").children().css("left", "21px");
                         $("#_LEBorder").css("transition", "1s");
                         $("#_LanEditorBg").css("transition", "0.8s");
                     }
@@ -234,10 +233,10 @@ var LanEditor = {
                 case "OpenAutoSymbol":
                     if (LanEditor.SetPara.OpenAutoSymbol == 1) {
                         LanEditor.SetPara.OpenAutoSymbol = 0;
-                        $("._LESCon", e.target).css("background-color", "#dcdada").children().css("left", "1px");
+                        $("._LESCon", $(this)).css("background-color", "#dcdada").children().css("left", "1px");
                     } else {
                         LanEditor.SetPara.OpenAutoSymbol = 1;
-                        $("._LESCon", e.target).css("background-color", "#4dc4f5").children().css("left", "21px");
+                        $("._LESCon", $(this)).css("background-color", "#4dc4f5").children().css("left", "21px");
                     }
                     break;
             }
@@ -262,7 +261,7 @@ var LanEditor = {
     //渲染HTML
     RenderHTML: function() {
         $("#" + this.showelem).html(this.converter.makeHtml(this.TextElem.val()));
-        $('pre code').each(function(i, block) {
+        $('pre code', $("#" + this.showelem)).each(function(i, block) {
             hljs.highlightBlock(block);
         });
     },
@@ -445,7 +444,7 @@ var LanEditor = {
     },
     //符号自动补全，keyup阶段执行
     AutoCompleteSymbol: function(event) {
-        if(LanEditor.SetPara.OpenAutoSymbol == 0) {
+        if (LanEditor.SetPara.OpenAutoSymbol == 0) {
             return;
         }
         var e = event;
@@ -573,7 +572,7 @@ var LanEditor = {
                 TextElem.iAddField(LanEditor.SKLPara.ResultSet[LanEditor.SKLPara.cs]);
             }
         }
-        console.log("keyCode -> " + e.which);
+        // console.log("keyCode -> " + e.which);
     },
     //------------------------------------------------------文件对象
     File: {
@@ -747,11 +746,11 @@ var LanEditor = {
             if (e.which == 27) {
                 e.preventDefault();
                 if (this.IsShow) {
-                    console.log("menu -> hide");
+                    // console.log("menu -> hide");
                     LanEditor.Background.Show(false);
                     this.Show(false);
                 } else {
-                    console.log("menu -> show");
+                    // console.log("menu -> show");
                     LanEditor.Background.Show(true);
                     this.Show(true);
                     LanEditor.File.ShowFileList($("#_LEFilelist ul"));
@@ -761,26 +760,38 @@ var LanEditor = {
         //设置是否显示菜单，true显示，false不显示
         Show: function(IsShow) {
             this.MenuObj.queue([]);
-            if(IsShow){
-                this.MenuObj.queue(function(){
+            if (IsShow) {
+                this.MenuObj.queue(function() {
                     LanEditor.Menu.IsShow = true;
                     $(this).css("display", "block");
-                    $(this).delay(10).dequeue();
+                    $(this).delay(1).dequeue();
                 });
-                this.MenuObj.queue(function(){
+                this.MenuObj.queue(function() {
                     $(this).css("height", "320px");
                     $(this).dequeue();
                 });
-            }else{
-                this.MenuObj.queue(function(){
-                    LanEditor.Menu.IsShow = false;
-                    $(this).css("height", "30px");
-                    $(this).delay(900).dequeue();
-                });
-                this.MenuObj.queue(function(){
-                    $(this).css("display", "none");
-                    $(this).dequeue();
-                });
+
+            } else {
+                if (LanEditor.SetPara.OpenMenuAni) {
+                    this.MenuObj.queue(function() {
+                        LanEditor.Menu.IsShow = false;
+                        $(this).css("height", "30px");
+                        $(this).delay(900).dequeue();
+                    });
+                    this.MenuObj.queue(function() {
+                        $(this).css("display", "none");
+                        $(this).dequeue();
+                    });
+                } else {
+                    this.MenuObj.queue(function() {
+                        LanEditor.Menu.IsShow = false;
+                        $(this).css({
+                            "height": "30px",
+                            "display": "none"
+                        });
+                        $(this).delay(900).dequeue();
+                    });
+                }
             }
         }
     },
@@ -791,23 +802,23 @@ var LanEditor = {
         //切换显示状态
         Toggle: function() {
             this.BackObj.queue([]);
-            if(this.IsShow) {
-                this.BackObj.queue(function(){
+            if (this.IsShow) {
+                this.BackObj.queue(function() {
                     LanEditor.Background.IsShow = false;
                     $(this).css("opacity", 0);
                     $(this).delay(800).dequeue();
                 });
-                this.BackObj.queue(function(){
+                this.BackObj.queue(function() {
                     $(this).css("display", "none");
                     $(this).dequeue();
                 });
-            }else{
-                this.BackObj.queue(function(){
+            } else {
+                this.BackObj.queue(function() {
                     LanEditor.Background.IsShow = true;
                     $(this).css("display", "block");
-                    $(this).delay(10).dequeue();
+                    $(this).delay(1).dequeue();
                 });
-                this.BackObj.queue(function(){
+                this.BackObj.queue(function() {
                     $(this).css("opacity", 0.8);
                     $(this).dequeue();
                 });
@@ -860,7 +871,6 @@ var LanEditor = {
         //立马应用设置
         Apply: function() {
             $("#OpenSKL ._LESCon", $("#_LESetting")).css(function(para) {
-                console.log($(this));
                 if (para == 1) {
                     $("#OpenSKL ._LESCon", $("#_LESetting")).children().css("left", "21px");
                     return {
@@ -889,6 +899,7 @@ var LanEditor = {
                         "background-color": "#4dc4f5"
                     };
                 }
+                $("#_LEBorder").css("transition", "0s");
                 return {
                     "background-color": "#dcdada"
                 };
