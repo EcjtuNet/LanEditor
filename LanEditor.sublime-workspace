@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"background",
+				"Background"
+			],
+			[
+				"back",
+				"Background"
+			],
+			[
 				"classnae",
 				"ClassName"
 			],
@@ -504,16 +512,8 @@
 				"blindID"
 			],
 			[
-				"back",
-				"background-color"
-			],
-			[
 				"list",
 				"list-style"
-			],
-			[
-				"photo",
-				"photofile"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "LanEditor.css",
 			"settings":
 			{
-				"buffer_size": 8091,
+				"buffer_size": 8089,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,16 +531,8 @@
 			"file": "LanEditor.js",
 			"settings":
 			{
-				"buffer_size": 47206,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 450,
-				"line_ending": "Windows"
+				"buffer_size": 86650,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -552,10 +544,10 @@
 			}
 		},
 		{
-			"contents": "h1,h2,h3,h4,h5,h6,p,blockquote{margin:0;padding:0}body{font-family:\"Helvetica Neue\",Helvetica,\"Hiragino Sans GB\",Arial,sans-serif;font-size:13px;line-height:18px;color:#737373;margin:10px 13px 10px 13px}\na{color:#0069d6}a:hover{color:#0050a3;text-decoration:none}a img{border:0}p{margin-bottom:9px}h1,h2,h3,h4,h5,h6{color:#404040;line-height:36px}h1{margin-bottom:18px;font-size:30px}\nh2{font-size:24px}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{font-size:13px}hr{margin:0 0 19px;border:0;border-bottom:1px solid #ccc}blockquote{padding:13px 13px 21px 15px;margin-bottom:18px;font-family:georgia,serif;font-style:italic}\nblockquote:before{content:\"ﾂ，\";font-size:40px;margin-left:-10px;font-family:georgia,serif;color:#eee}blockquote p{font-size:14px;font-weight:300;line-height:18px;margin-bottom:0;font-style:italic}\ncode,pre{font-family:Monaco,Andale Mono,Courier New,monospace}code{background-color:#fee9cc;color:rgba(0,0,0,0.75);padding:1px 3px;font-size:12px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}\npre{display:block;padding:14px;margin:0 0 18px;line-height:16px;font-size:11px;border:1px solid #d9d9d9;white-space:pre-wrap;word-wrap:break-word}pre code{background-color:#fff;color:#737373;font-size:11px;padding:0}\n@media screen and (min-width:768px){body{width:748px;margin:10px auto}}",
+			"contents": "h1,h2,h3,h4,h5,h6,p,blockquote{margin:0;padding:0}body{font-family:\"Helvetica Neue\",Helvetica,\"Hiragino Sans GB\",Arial,sans-serif;font-size:13px;line-height:18px;color:#737373;margin:10px 13px 10px 13px}\na{color:#0069d6}a:hover{color:#0050a3;text-decoration:none}a img{border:0}p{margin-bottom:9px}h1,h2,h3,h4,h5,h6{color:#404040;line-height:36px}h1{margin-bottom:18px;font-size:30px}\nh2{font-size:24px}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{font-size:13px}hr{margin:0 0 19px;border:0;border-bottom:1px solid #ccc}blockquote{padding:13px 13px 21px 15px;margin-bottom:18px;font-family:georgia,serif;font-style:italic}\nblockquote:before{content:\"C\";font-size:40px;margin-left:-10px;font-family:georgia,serif;color:#eee}blockquote p{font-size:14px;font-weight:300;line-height:18px;margin-bottom:0;font-style:italic}\ncode,pre{font-family:Monaco,Andale Mono,Courier New,monospace}code{background-color:#fee9cc;color:rgba(0,0,0,0.75);padding:1px 3px;font-size:12px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}\npre{display:block;padding:14px;margin:0 0 18px;line-height:16px;font-size:11px;border:1px solid #d9d9d9;white-space:pre-wrap;word-wrap:break-word}pre code{background-color:#fff;color:#737373;font-size:11px;padding:0}\n@media screen and (min-width:768px){body{width:748px;margin:10px auto}}",
 			"file": "htmlcss.min.css",
 			"file_size": 1335,
-			"file_write_time": 130892100685928310,
+			"file_write_time": 130922923289793512,
 			"settings":
 			{
 				"buffer_size": 1334,
@@ -575,8 +567,24 @@
 			"file": "demo.html",
 			"settings":
 			{
-				"buffer_size": 1599,
+				"buffer_size": 1445,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 693,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "LanEditor.sublime-project",
+			"settings":
+			{
+				"buffer_size": 45,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -605,21 +613,26 @@
 		}
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 138.0,
+		"last_filter": "Package Control: ins",
 		"selected_items":
 		[
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
 			[
 				"Package Control: ",
 				"Package Control: Install Package"
 			],
 			[
 				"Package Control: insta",
-				"Package Control: Install Package"
-			],
-			[
-				"Package Control: ins",
 				"Package Control: Install Package"
 			],
 			[
@@ -639,7 +652,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 504.0
+		"width": 363.0
 	},
 	"console":
 	{
@@ -658,8 +671,20 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/home/lan/www/LanEditor"
+	],
 	"file_history":
 	[
+		"/media/lan/BLUESCODE/jmd5_3.txt3529",
+		"/home/lan/www/jmd5_3.txt",
+		"/home/lan/www/jmd5_2.txt",
+		"/media/lan/SSD系统/Users/BluesCode/Desktop/jmd5_3.txt",
+		"/media/lan/SSD软件/BluesCode/文本框编辑.js",
+		"/home/lan/www/m18_2.java",
+		"/home/lan/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/lan/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/D/program file/Sublime Text 3/Data/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
 		"/D/program file/Sublime Text 3/Data/Packages/User/Preferences.sublime-settings",
 		"/D/program file/Sublime Text 3/Data/Packages/Default/Preferences.sublime-settings",
@@ -779,19 +804,11 @@
 		"/Users/BluesDream/Sites/SunYuezhenGP/imgcheck.php",
 		"/Users/BluesDream/Sites/PowerManagerSystem/price/menu.php",
 		"/Users/BluesDream/Sites/PowerManagerSystem/price/js/menu.js",
-		"/Users/BluesDream/Documents/BluesDream/Desktop/jspdemo/resouce/chapter6/WebRoot/adminmenu.jsp",
-		"/Users/BluesDream/Documents/BluesDream/Desktop/jspdemo/resouce/chapter2/src/ch2/dao/UserDAO.java",
-		"/Users/BluesDream/Documents/BluesDream/Desktop/jspdemo/resouce/chapter2/WebRoot/register.jsp",
-		"/Users/BluesDream/Documents/BluesDream/Desktop/jspdemo/resouce/chapter2/WebRoot/activeUser.jsp",
-		"/Users/BluesDream/Sites/PowerManagerSystem/func/uuid.php",
-		"/Users/BluesDream/Sites/PowerManagerSystem/func/date.php",
-		"/Users/BluesDream/Sites/SunYuezhenGP/about.html",
-		"/Users/BluesDream/Sites/SunYuezhenGP/css/style.css",
-		"/Users/BluesDream/Sites/SunYuezhenGP/news.html"
+		"/Users/BluesDream/Documents/BluesDream/Desktop/jspdemo/resouce/chapter6/WebRoot/adminmenu.jsp"
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 28.0
 	},
 	"find_in_files":
 	{
@@ -882,19 +899,20 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8091,
+						"buffer_size": 8089,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2868,
-								2868
+								3662,
+								3662
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"encoding_helper_encoding": "UTF-8",
 							"origin_encoding": "UTF-8",
 							"side_bar_folders_auto_load_folder": 1,
@@ -903,10 +921,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4447.0,
+						"translation.y": 5227.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -915,19 +933,20 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 47206,
+						"buffer_size": 86650,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								31022,
-								31022
+								11586,
+								11586
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"encoding_helper_encoding": "UTF-8",
 							"origin_encoding": "UTF-8",
 							"side_bar_folders_auto_load_folder": 1,
@@ -936,7 +955,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 14058.0,
+						"translation.y": 5613.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -944,37 +963,6 @@
 				},
 				{
 					"buffer": 2,
-					"file": "README.md",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 450,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								450,
-								450
-							]
-						],
-						"settings":
-						{
-							"encoding_helper_encoding": "UTF-8",
-							"origin_encoding": "UTF-8",
-							"syntax": "Packages/Markdown/Markdown.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "htmlcss.css",
 					"semi_transient": false,
 					"settings":
@@ -992,6 +980,7 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"encoding_helper_encoding": "cp936",
 							"origin_encoding": "UTF-8",
 							"side_bar_folders_auto_load_folder": 1,
@@ -1000,14 +989,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 421.0,
+						"translation.y": 467.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "htmlcss.min.css",
 					"semi_transient": false,
 					"settings":
@@ -1025,9 +1014,10 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"encoding_helper_encoding": "cp936",
 							"in_converting": true,
-							"origin_encoding": "SHIFT_JIS",
+							"origin_encoding": "UTF-8",
 							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -1035,11 +1025,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "boots.css",
 					"semi_transient": false,
 					"settings":
@@ -1051,12 +1041,13 @@
 						"selection":
 						[
 							[
-								346,
-								346
+								336,
+								336
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"encoding_helper_encoding": "UTF-8",
 							"origin_encoding": "ASCII",
 							"side_bar_folders_auto_load_folder": 1,
@@ -1068,28 +1059,29 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "demo.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1599,
+						"buffer_size": 1445,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								590,
-								590
+								310,
+								310
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"encoding_helper_encoding": "cp936",
 							"origin_encoding": "ASCII",
 							"side_bar_folders_auto_load_folder": 1,
@@ -1100,11 +1092,71 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 693,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								516,
+								516
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Mac Classic.tmTheme",
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
+					"file": "LanEditor.sublime-project",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 45,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "Dev/test.html",
 					"semi_transient": false,
 					"settings":
@@ -1122,18 +1174,22 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"encoding_helper_encoding": "UTF-8",
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 153.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "Dev/test.js",
 					"semi_transient": false,
 					"settings":
@@ -1151,18 +1207,20 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"encoding_helper_encoding": "UTF-8",
+							"origin_encoding": "ASCII",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "Dev/test.css",
 					"semi_transient": false,
 					"settings":
@@ -1180,16 +1238,18 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"encoding_helper_encoding": "UTF-8",
+							"origin_encoding": "UTF-8",
 							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4105.0,
+						"translation.y": 4561.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -1197,7 +1257,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 28.0
 	},
 	"input":
 	{
@@ -1234,15 +1294,17 @@
 	{
 		"height": 0.0
 	},
+	"pinned_build_system": "",
 	"project": "LanEditor.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 52.0
 	},
 	"save_all_on_build": true,
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1251,6 +1313,7 @@
 	"select_project":
 	{
 		"height": 500.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1259,11 +1322,13 @@
 	"select_symbol":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},
