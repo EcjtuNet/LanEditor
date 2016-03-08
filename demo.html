@@ -3,13 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>LanEditor</title>
+	<!-- <link rel="stylesheet" type="text/css" href="boots.css"> -->
 	<link rel="stylesheet" type="text/css" href="LanEditor.css">
 	<link rel="stylesheet" type="text/css" href="highlight/styles/monokai_sublime.css">
 	<script type="text/javascript" src="./jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="LanEditor.js"></script>
+	<script type="text/javascript" src="LanEditor.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			LanEditor.init("editor", "show");
+			var lan = LanEditor.init({
+				textelem: "editor",
+				showelem: "show",
+				PluginsMode: false
+			});
+			if(lan.status == false){
+				alter(lan.message);
+				return ;
+			}
 		});
 	</script>
 	<style type="text/css">
