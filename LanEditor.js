@@ -562,6 +562,33 @@ var LanEditor = {
             if ((pre == "[]" || pre == "【】") && (next == "]" || next == "】")) {
                 TextElem.iDelField(-1);
             }
+        } else if (e.shiftKey && e.which == 188) { // < 左尖括号自动补全
+            if (TextElem.iGetPosStr(-1) == "<") {
+                TextElem.iAddField(">");
+            } else {
+                TextElem.iAddField("》");
+            }
+            TextElem.iSelectField(TextElem.iGetFieldPos() - 1);
+        } else if (e.shiftKey && e.which == 190) { // > 右尖括号判断是否成对匹配
+            var pre = TextElem.iGetPosStr(-2);
+            var next = TextElem.iGetPosStr(1);
+            if ((pre == "<>" || pre == "《》") && (next == ">" || next == "》")) {
+                TextElem.iDelField(-1);
+            }
+        } else if (!e.shiftKey && e.which == 222) { // ' 左单引号自动补全
+            if (TextElem.iGetPosStr(-1) == "'") {
+                TextElem.iAddField("'");
+            } else {
+                TextElem.iAddField('’');
+            }
+            TextElem.iSelectField(TextElem.iGetFieldPos() - 1);
+        } else if (e.shiftKey && e.which == 222) { // “ 左双引号自动补全
+            if (TextElem.iGetPosStr(-1) == '"') {
+                TextElem.iAddField('"');
+            } else {
+                TextElem.iAddField('”');
+            }
+            TextElem.iSelectField(TextElem.iGetFieldPos() - 1);
         }
     },
     //重写按键功能，在keydown阶段执行
